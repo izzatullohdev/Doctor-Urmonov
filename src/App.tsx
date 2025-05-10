@@ -1,6 +1,13 @@
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RouterLayout from "./layout/RouterLayout";
 import { AppProvider } from "./context/AppContext";
+
+const Home = React.lazy(() => import('./pages/Home'));
+const Blog = React.lazy(() => import('./pages/Blog'));
+const News = React.lazy(() => import('./pages/News'));
+const Services = React.lazy(() => import('./pages/Services'));
+const BlogCardDetails = React.lazy(() => import('./pages/CardDetails'));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -10,17 +17,24 @@ const App = () => {
       children: [
         {
           index: true,
-          element: (
-            <div>
-              <p className="font-poppins font-normal">Poppins 400</p>
-              <p className="font-poppins font-medium">Poppins 500</p>
-              <p className="font-poppins font-semibold">Poppins 600</p>
-              <p className="font-poppins font-bold">Poppins 700</p>
-              <p className="font-poppins font-extrabold">Poppins 800</p>
-              <p className="font-poppins font-black">Poppins 900</p>
-            </div>
-          ),
+          element: <Home />
         },
+        {
+          path: "blog",
+          element: <Blog />,
+        },
+        {
+          path: "news",
+          element: <News />,
+        },
+        {
+          path: "services",
+          element: <Services />
+        },
+        {
+          path: "/card/:id",
+          element: <BlogCardDetails />
+        }
       ],
     },
   ]);
