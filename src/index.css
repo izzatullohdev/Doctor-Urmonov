@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 .card-shadow {
-  box-shadow: 0px 10px #fff !important;
+  border-radius: 0 0 20px 0;
+  box-shadow: 3px 12px #fff !important;
 }
 
 @font-face {

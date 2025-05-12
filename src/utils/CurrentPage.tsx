@@ -9,6 +9,7 @@ export const useCurrentPage = () => {
     blog: "Блог",
     news: "Новости",
     services: "Услуги",
+    about: "О себе"
   };
 
   let title = "";
