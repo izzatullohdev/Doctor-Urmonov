@@ -35,3 +35,9 @@ export interface PatientTypes {
     description: string;
     image: string;
 }
+
+export interface InfoTypes {
+    id: number;
+    title: string;
+    description: string;
+}

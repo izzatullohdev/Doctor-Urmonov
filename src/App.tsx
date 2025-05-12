@@ -6,6 +6,7 @@ import { AppProvider } from "./context/AppContext";
 const Home = React.lazy(() => import('./pages/Home'));
 const Blog = React.lazy(() => import('./pages/Blog'));
 const News = React.lazy(() => import('./pages/News'));
+const About = React.lazy(() => import('./pages/About'));
 const Services = React.lazy(() => import('./pages/Services'));
 const BlogCardDetails = React.lazy(() => import('./pages/CardDetails'));
 
@@ -18,6 +19,10 @@ const App = () => {
         {
           index: true,
           element: <Home />
+        },
+        {
+          path: "about",
+          element: <About />
         },
         {
           path: "blog",
