@@ -43,9 +43,15 @@ export interface InfoTypes {
 }
 
 export interface UsluguTypes {
-    id: 1,
+    id: number,
     image: string,
     title: string,
     description: string[],
     button: string
+}
+
+export interface YearsTypes {
+    id: number,
+    years: string | number,
+    title: string
 }

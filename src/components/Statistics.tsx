@@ -11,21 +11,21 @@ const Statistics = () => {
           />
         </div>
         <div className="w-full grid grid-cols-2 max-sm:grid-cols-1 gap-6">
-          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-32 p-6">
-            <h1 title="+13" className="text-[#0A6CFB] text-5xl md:text-6xl font-montserrat font-bold">+13</h1>
-            <p className="text-[#454745] text-xl md:text-2xl font-montserrat font-semibold">лет опыта</p>
+          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-22 p-6">
+            <h1 title="+13" className="text-[#0A6CFB] text-[80px] font-montserrat font-bold">+13</h1>
+            <p className="text-[#454745] text-[32px] font-montserrat font-semibold">лет опыта</p>
           </div>
-          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-32 p-6">
-            <h1 title="+80" className="text-[#0A6CFB] text-5xl md:text-6xl font-montserrat font-bold">+80</h1>
-            <p className="text-[#454745] text-xl md:text-2xl font-montserrat font-semibold">научных статей</p>
+          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-22 p-6">
+            <h1 title="+80" className="text-[#0A6CFB] text-[80px] font-montserrat font-bold">+80</h1>
+            <p className="text-[#454745] text-[32px] font-montserrat font-semibold">научных статей</p>
           </div>
-          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-32 p-6">
-            <h1 title="+1200" className="text-[#0A6CFB] text-5xl md:text-6xl font-montserrat font-bold">+1200</h1>
-            <p className="text-[#454745] text-xl md:text-2xl font-montserrat font-semibold text-center">довольных клиентов</p>
+          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-22 p-6">
+            <h1 title="+1200" className="text-[#0A6CFB] text-[80px] font-montserrat font-bold">+1200</h1>
+            <p className="text-[#454745] text-[32px] font-montserrat font-semibold text-center">довольных клиентов</p>
           </div>
-          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-32 p-6">
-            <h1 title="+2000" className="text-[#0A6CFB] text-5xl md:text-6xl font-montserrat font-bold">+2000</h1>
-            <p className="text-[#454745] text-xl md:text-2xl font-montserrat font-semibold text-center">проведенные операции</p>
+          <div className="bg-[#F5F8FF] flex flex-col items-center justify-center rounded-[20px] text-center py-22 p-6">
+            <h1 title="+2000" className="text-[#0A6CFB] text-[80px] font-montserrat font-bold">+2000</h1>
+            <p className="text-[#454745] text-[32px] font-montserrat font-semibold text-center">проведенные операции</p>
           </div>
         </div>
       </div>
