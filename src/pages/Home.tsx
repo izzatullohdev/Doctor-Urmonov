@@ -1,14 +1,16 @@
-import React from 'react';
-const Patients = React.lazy(() => import('../components/Patients'));
-const Videos = React.lazy(() => import('../components/Videos'));
+import React from "react";
+import BiographySection from "../components/BiographySection";
+const Patients = React.lazy(() => import("../components/Patients"));
+const Videos = React.lazy(() => import("../components/Videos"));
 
 const Home = () => {
   return (
-    <div className=''>
-        <Patients />
-        <Videos />
+    <div className="">
+      <BiographySection />
+      <Patients />
+      <Videos />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
