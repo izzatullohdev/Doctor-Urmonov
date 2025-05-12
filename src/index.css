@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+.card-shadow {
+  box-shadow: 0px 10px #fff !important;
+}
+
 @font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");

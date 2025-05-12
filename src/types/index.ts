@@ -41,3 +41,11 @@ export interface InfoTypes {
     title: string;
     description: string;
 }
+
+export interface UsluguTypes {
+    id: 1,
+    image: string,
+    title: string,
+    description: string[],
+    button: string
+}
