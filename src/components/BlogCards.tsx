@@ -5,7 +5,7 @@ const Cards = () => {
   const { cardData } = useAppContext();
 
   return (
-    <div className="pb-52 py-8">
+    <div className="mb-52">
       <div className="max-w-7xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-xl:grid-cols-2 gap-x-4 gap-y-12">
         {
           cardData?.map((item) => (
@@ -26,7 +26,7 @@ const Cards = () => {
                 <p className="text-[14px] sm:text-[16px] text-[#1F2A42] mb-4">
                   {item.description}
                 </p>
-                <NavLink to={`/card/${item.id}`} className="w-full flex justify-center rounded-[10px] bg-[#0A6CFB] text-white font-medium text-[16px] sm:text-[18px] lg:text-[20px] py-[10px] hover:bg-[#085cd6] transition-colors duration-200 mt-6">
+                <NavLink to={`/card/${item.id}`} className="w-full flex justify-center rounded-[10px] bg-[#0A6CFB] text-white font-medium text-[16px] sm:text-[18px] lg:text-[20px] py-3 hover:bg-[#085cd6] transition-colors duration-200 mt-6">
                   {item.button}
                 </NavLink>
               </div>

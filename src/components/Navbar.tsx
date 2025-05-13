@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import {
-  FaYoutube,
-  FaInstagram,
-  FaTelegramPlane,
   FaFacebookF,
   FaBars,
   FaTimes,
   FaPhoneAlt,
 } from "react-icons/fa";
+import { AiOutlineYoutube } from "react-icons/ai";
+import { IoLogoInstagram } from "react-icons/io";
+import { PiTelegramLogo } from "react-icons/pi";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,31 +25,24 @@ const Navbar: FC = () => {
 
   return (
     <header className="bg-[#F8F9FF] border-b border-gray-200">
-      {/* Top nav */}
-      <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
-        <h1 className="font-poppins font-bold text-[28px] sm:text-[36px] text-gray-900">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-6 px-4">
+        <NavLink to={"/"} className="font-poppins font-extrabold text-[28px] max-md:text-[20px] sm:text-[36px] text-gray-900">
           Doctor Urmonov
-        </h1>
-
-        {/* Desktop Right Side */}
+        </NavLink>
+        <div className="flex items-center gap-6 text-gray-700 text-xl ml-10">
+          <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
+          <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
+          <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
+          <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+        </div>
         <div className="hidden lg:flex items-center gap-8">
-          <div className="flex gap-6 text-gray-700 text-xl">
-            <FaYoutube className="hover:text-red-600" />
-            <FaInstagram className="hover:text-pink-500" />
-            <FaTelegramPlane className="hover:text-sky-500" />
-            <FaFacebookF className="hover:text-blue-600" />
-          </div>
-
-          <span className="text-[#454745] font-montserrat text-[18px]">
+          <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[22px]">
             +998 77 000 26 26
-          </span>
-
-          <button className="bg-[#0A6CFB] hover:bg-blue-700 text-white px-4 py-3 rounded-md text-sm">
+          </a>
+          <button className="bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-4">
             Записаться на приём
           </button>
         </div>
-
-        {/* Hamburger */}
         <div className="lg:hidden">
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -61,7 +54,7 @@ const Navbar: FC = () => {
                 animate={{ rotate: 180 }}
                 transition={{ duration: 0.3 }}
               >
-                <FaTimes className="text-2xl text-gray-800" />
+                <FaTimes className="text-3xl text-gray-800 cursor-pointer mt-2" />
               </motion.div>
             ) : (
               <motion.div
@@ -69,23 +62,21 @@ const Navbar: FC = () => {
                 animate={{ rotate: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <FaBars className="text-2xl text-gray-800" />
+                <FaBars className="text-3xl text-gray-800 cursor-pointer mt-2" />
               </motion.div>
             )}
           </motion.button>
         </div>
       </div>
-
-      {/* Bottom nav for desktop */}
       <nav className="border-t border-gray-200 bg-[#F8F9FF]">
-        <ul className="max-w-7xl mx-auto px-4 gap-10 py-3 text-[18px] font-medium text-gray-700 hidden lg:flex">
+        <ul className="max-w-7xl mx-auto px-4 gap-10 py-[0px] text-[18px] font-medium text-[#454745] hidden lg:flex">
           {navLinks.map(({ path, label }) => (
-            <li key={path}>
+            <li key={path} className="py-5">
               <NavLink
                 to={path}
                 className={({ isActive }) =>
                   isActive
-                    ? "border-b-2 border-gray-800 pb-1 text-gray-900"
+                    ? "font-bold border-b-2 border-[#454745] text-[#454745] pb-5.5"
                     : "hover:text-gray-900"
                 }
               >
@@ -94,8 +85,6 @@ const Navbar: FC = () => {
             </li>
           ))}
         </ul>
-
-        {/* AnimatePresence bilan mobile menyu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -103,9 +92,8 @@ const Navbar: FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden flex flex-col gap-4 px-6 py-4 text-[18px] text-gray-700 font-medium"
+              className="lg:hidden flex flex-col gap-4 px-6 py-4 text-[18px] text-[#454745] font-medium"
             >
-              {/* Icons */}
               <motion.div
                 className="flex justify-between items-center"
                 initial="hidden"
@@ -119,31 +107,28 @@ const Navbar: FC = () => {
                   className="flex gap-4 text-xl"
                   variants={{ visible: {}, hidden: {} }}
                 >
-                  <FaYoutube />
-                  <FaInstagram />
-                  <FaTelegramPlane />
-                  <FaFacebookF />
+                  <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
+                  <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
+                  <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
+                  <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
                 </motion.div>
 
                 <motion.div
                   className="flex items-center gap-2 text-base"
                   variants={{ visible: {}, hidden: {} }}
                 >
-                  <FaPhoneAlt /> +998 77 000 26 26
+                  <FaPhoneAlt /> 
+                  <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[18px]">+998 77 000 26 26</a>
                 </motion.div>
               </motion.div>
-
-              {/* Button */}
               <motion.button
-                className="bg-[#0A6CFB] hover:bg-blue-700 text-white px-4 py-3 rounded-md text-sm"
+                className="w-full bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
                 Записаться на приём
               </motion.button>
-
-              {/* Links */}
               <motion.ul
                 className="flex flex-col gap-4"
                 initial="hidden"

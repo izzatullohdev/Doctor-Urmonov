@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppContext } from '../context/AppContext';
 
 const HomeCards = () => {
@@ -13,7 +12,7 @@ const HomeCards = () => {
         {UsluguData?.map((item) => (
           <div
             key={item.id}
-            className='group bg-[#E7EEFE] hover:bg-[#0A0933] hover:text-white 
+            className='group bg-[#F5F8FF] hover:bg-[#0A0933] hover:text-white 
                       text-[#0A0933] rounded-[20px] overflow-hidden 
                       transition-all duration-300 relative p-4'
           >
@@ -23,7 +22,7 @@ const HomeCards = () => {
               alt={item.title}
               className='w-full rounded-[15px]'
             />
-            <div className="mb-16">
+            <div className="">
               <h1 title={item.title} className='text-[20px] font-semibold leading-[140%] font-montserrat py-4'>
                 {item.title}
               </h1>
@@ -38,13 +37,13 @@ const HomeCards = () => {
             <div className="w-[165px] h-[95px] bg-white rounded-[21px] absolute bottom-[-25px] right-[-25px] transition-all duration-300">
               <div className="
                 w-[35px] h-[35px] absolute bottom-[25px] right-[165px] 
-                bg-[#E7EEFE] border border-[#E7EEFE] card-shadow 
+                bg-[#F5F8FF] border border-[#F5F8FF] card-shadow 
                 transition-all duration-300 
                 group-hover:bg-[#0A0933] group-hover:border-[#0A0933]
               "></div>
               <div className="
                 w-[35px] h-[35px] absolute bottom-[95px] right-[25px] 
-                bg-[#E7EEFE] border border-[#E7EEFE] card-shadow 
+                bg-[#F5F8FF] border border-[#F5F8FF] card-shadow 
                 transition-all duration-300 
                 group-hover:bg-[#0A0933] group-hover:border-[#0A0933]
               "></div>

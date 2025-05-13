@@ -1,6 +1,6 @@
 const Statistics = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0 py-20">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0">
       <div className="flex flex-col lg:flex-row items-center gap-12">
         <div className="w-full h-full flex justify-center">
           <img 

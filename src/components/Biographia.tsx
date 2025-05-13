@@ -7,7 +7,6 @@ const Biographia = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-10 my-20">
-      {/* Chap tarafdagi rasm */}
       <div className="w-full md:w-[48%] relative">
         <img 
           src={subtract}
@@ -15,8 +14,6 @@ const Biographia = () => {
           alt="Биография" 
           className="w-full h-auto object-contain rounded-xl"
         />
-
-        {/* 13+ button doim chiqadi */}
         <div className="w-[48%] h-[22%] flex items-end justify-start absolute bottom-0 left-0 pt-2 pr-2">
           <button className="w-full h-full bg-[#0A6CFB] rounded-[10px] text-white flex items-center gap-3 font-montserrat p-1">
             <h3 title="13+" className="font-semibold text-[24px] sm:text-[28px] md:text-[30px] lg:text-[32px]">13+</h3>
@@ -27,8 +24,6 @@ const Biographia = () => {
           </button>
         </div>
       </div>
-
-      {/* O'ng tarafdagi matn */}
       <div className="w-full md:w-[45%] flex flex-col items-start gap-5">
         {isAboutPage ? (
           <>

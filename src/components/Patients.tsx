@@ -19,7 +19,7 @@ const Patients = () => {
             }
         </div>
         <div className="flex items-center justify-center mt-16">
-            <button className='bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium text-white px-12 py-3'>Оставить отзыв</button>
+            <button className='bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium text-white px-12 py-4'>Оставить отзыв</button>
         </div>
     </div>
   )
