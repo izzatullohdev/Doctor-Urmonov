@@ -9,7 +9,7 @@ const About = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
   return (
-    <div>
+    <div className='max-lg:mt-[185px]'>
       <Elementary />
       <Statistics />
       <Biographia />

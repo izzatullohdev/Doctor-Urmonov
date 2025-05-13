@@ -24,12 +24,12 @@ const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#F8F9FF] border-b border-gray-200">
+    <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-6 px-4">
-        <NavLink to={"/"} className="font-poppins font-extrabold text-[28px] max-md:text-[20px] sm:text-[36px] text-gray-900">
+        <NavLink to={"/"} className="font-poppins font-extrabold text-[30px] sm:text-[36px] text-gray-900">
           Doctor Urmonov
         </NavLink>
-        <div className="flex items-center gap-6 text-gray-700 text-xl ml-10">
+        <div className="max-lg:hidden flex items-center gap-6 text-gray-700 text-xl ml-10">
           <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
           <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
           <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
@@ -121,14 +121,6 @@ const Navbar: FC = () => {
                   <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[18px]">+998 77 000 26 26</a>
                 </motion.div>
               </motion.div>
-              <motion.button
-                className="w-full bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                Записаться на приём
-              </motion.button>
               <motion.ul
                 className="flex flex-col gap-4"
                 initial="hidden"
@@ -159,6 +151,14 @@ const Navbar: FC = () => {
                     </NavLink>
                   </motion.li>
                 ))}
+                <motion.button
+                className="w-full bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                Записаться на приём
+              </motion.button>
               </motion.ul>
             </motion.div>
           )}

@@ -55,3 +55,17 @@ export interface YearsTypes {
     years: string | number,
     title: string
 }
+
+export interface BlogTypes {
+    id: number,
+    title: string,
+    general_title: string,
+    image: string,
+    general_image: string,
+    description: string,
+    sub_title: string,
+    sub_description: string[],
+    helper_image: string[],
+    helper_title: string
+    helper_image_two: string[]
+}

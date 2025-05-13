@@ -1,4 +1,4 @@
-import { CardTypes, ServiceTypes, PatientTypes, InfoTypes, UsluguTypes, YearsTypes } from '../src/types';
+import { CardTypes, ServiceTypes, PatientTypes, InfoTypes, UsluguTypes, YearsTypes, BlogTypes } from '../src/types';
 
 export const CardData: CardTypes[] = [
     {
@@ -495,5 +495,152 @@ export const YearsData: YearsTypes[] = [
         id: 9,
         years: "В настоящее время",
         title: "торакоабдоминальный хирург отделения торакоабдоминальной онкологии и рентгенохирургии Ташкентского городского филиала РСНПМЦОиР"
+    }
+]
+
+export const BlogData: BlogTypes[] = [
+    {
+        id: 1,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
+    },
+    {
+        id: 2,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
+    },
+    {
+        id: 3,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
+    },
+    {
+        id: 4,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
+    },
+    {
+        id: 5,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
+    },
+    {
+        id: 6,
+        title: "Основные функции медицинских лабораторий",
+        general_title: "Успешные операции и годы опыта, подтверждённые реальной практикой",
+        image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141838/Rectangle_18_tzggdl.png",
+        general_image: "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141895/image_7_nfqbgx.png",
+        description: "На протяжении своей медицинской практики я провёл сотни успешных операций различной сложности в области онкологии и общей хирургии. Каждый случай — это не просто операция, а судьба пациента, которому я стремлюсь помочь с максимальной точностью и заботой.",
+        sub_title: "Мои работы охватывают широкий спектр направлений:",
+        sub_description: [
+            "– операции на лёгких, желудке, кишечнике и печени",
+            "– удаление новообразований, – лапароскопические и открытые вмешательства",
+            "– паллиативные процедуры и восстановительные операции",
+            "– установка порт-систем и другие современные методы лечения."
+        ],
+        helper_image: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141917/image_8_wy4f8g.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141938/image_9_atm0y0.png"
+        ],
+        helper_title: "Я горжусь тем, что мои пациенты возвращаются к полноценной жизни после вмешательства. Для меня важна не только успешность операции, но и качество жизни каждого человека после неё.",
+        helper_image_two: [
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141960/image_10_a6qtcj.png",
+            "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747141978/image_11_fl8a26.png"
+        ]
     }
 ]

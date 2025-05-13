@@ -1,4 +1,3 @@
-// utils/useCurrentPage.ts
 import { useLocation } from "react-router-dom";
 
 export const useCurrentPage = () => {
@@ -18,7 +17,12 @@ export const useCurrentPage = () => {
   if (path.includes("/card/")) {
     title = "Новости";
     breadcrumb = "Новости Конференция";
-  } else {
+  }
+  else if (path.includes("/blog/")){
+    title = "Блог";
+    breadcrumb = "Блог";
+  } 
+  else {
     const lastSegment = path.split("/").filter(Boolean).pop() || "home";
     const formatted =
       pageNames[lastSegment] ||

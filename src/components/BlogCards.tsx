@@ -1,41 +1,37 @@
 import { NavLink } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
-const Cards = () => {
-  const { cardData } = useAppContext();
+const BlogCards = () => {
+  const { BlogData } = useAppContext();
 
   return (
-    <div className="mb-52">
-      <div className="max-w-7xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-xl:grid-cols-2 gap-x-4 gap-y-12">
+    <div className='max-w-7xl mx-auto px-4 mb-26'>
+      <div className="grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-y-6 gap-x-4">
         {
-          cardData?.map((item) => (
-            <div key={item.id} className="bg-[#F4F5F8] rounded-[10px] relative">
-              <div className="absolute top-2 right-2 z-30 text-[#0A6CFB] bg-white rounded-[50px] font-normal font-poppins px-3 py-1">
-                {item.type}
+          BlogData?.map((item) => (
+            <NavLink to={`/blog/${item.id}`} key={item.id}>
+              <div className='rounded-[10px] overflow-hidden relative group shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer'>
+                <img 
+                  src={item.image}
+                  loading='lazy' 
+                  alt={item.title} 
+                  className='w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out'
+                />
+                <div className="w-full absolute bottom-0 left-0 p-4">
+                  <h1 
+                    title={item.title} 
+                    className='text-start font-montserrat text-white text-[20px] md:text-[22px] lg:text-[24px] font-semibold leading-[125%]'
+                  >
+                    {item.title}
+                  </h1>
+                </div>
               </div>
-              <img 
-                src={item.image} 
-                alt={item.description} 
-                loading='lazy'
-                className="rounded-t-[10px] w-full h-[300px] object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-[20px] sm:text-[22px] text-[#1F2A42] font-semibold pb-3">
-                  {item.title}
-                </h2>
-                <p className="text-[14px] sm:text-[16px] text-[#1F2A42] mb-4">
-                  {item.description}
-                </p>
-                <NavLink to={`/card/${item.id}`} className="w-full flex justify-center rounded-[10px] bg-[#0A6CFB] text-white font-medium text-[16px] sm:text-[18px] lg:text-[20px] py-3 hover:bg-[#085cd6] transition-colors duration-200 mt-6">
-                  {item.button}
-                </NavLink>
-              </div>
-            </div>
+            </NavLink>
           ))
         }
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cards;
+export default BlogCards;

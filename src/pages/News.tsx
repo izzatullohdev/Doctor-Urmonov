@@ -1,7 +1,7 @@
 import React from 'react';
 // import elementary and cards components
 const Elementary = React.lazy(() => import('../components/Elementary')); 
-const Cards = React.lazy(() => import('../components/BlogCards'));
+const Cards = React.lazy(() => import('../components/NewsCards'));
 
 const News = () => {
   return (

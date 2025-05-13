@@ -4,7 +4,7 @@ import urmonov from "../assets/urmonov.png";
 
 const About = () => {
   return (
-    <div className='bg-[#F5F8FF] mt-38 my-20 max-xl:px-4 max-sm:px-0'>
+    <div className='bg-[#F5F8FF] mt-[300px] max-lg:mt-[185px] my-20 max-xl:px-4 max-sm:px-0'>
         <div className="max-w-7xl mx-auto max-md:px-4 max-sm:px-0 flex items-center justify-between relative pt-12 pb-18">
             <div className="w-[58%]">
                 <h1 title='Урмонов Умиджон Бутабекович' className='font-bold text-[#0A0933] font-poppins text-[75px] max-xl:text-[40px] max-md:text-[18px] leading-[140%] relative z-20'>Урмонов Умиджон Бутабекович</h1>
