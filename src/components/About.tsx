@@ -19,14 +19,12 @@ const About = () => {
               </div>
               <img 
                 src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227887/bg_tjoihm.png' 
-                loading="lazy"
                 alt={t('about.desc')} 
                 className="h-full absolute top-0 left-0"
               />
               <div className="h-[110%] absolute bottom-0 right-0">
                   <img 
                     src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227952/urmonov_hiqohd.png'
-                    loading="lazy" 
                     alt={t('about.desc')} 
                     className="h-full relative"
                   />
@@ -36,7 +34,6 @@ const About = () => {
       <div className="md:hidden max-lg:mt-[200px] flex flex-col bg-[#F5F8FF] relative pt-8 px-4">
         <img 
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747205024/Group_2_qx3zt1.png" 
-          loading="lazy"
           alt={t('about.desc')} 
           className="w-full h-full absolute top-0 left-0 "
         />
@@ -44,7 +41,6 @@ const About = () => {
         <p className='relative text-[#0A0933] text-[18px] font-montserrat font-medium my-4'>{t('about.desc')}</p>
         <img 
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747204776/IMG_0904_2_2_zx90fa.png" 
-          loading="lazy"
           alt={t('about.desc')} 
           className="relative mb-16"
         />

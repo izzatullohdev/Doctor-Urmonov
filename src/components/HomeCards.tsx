@@ -18,7 +18,6 @@ const HomeCards = () => {
           >
             <img
               src={item.image}
-              loading='lazy'
               alt={item.title}
               className='w-full rounded-[15px]'
             />

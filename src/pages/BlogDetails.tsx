@@ -105,7 +105,6 @@ const BlogDetails = () => {
                     <SwiperSlide key={item.id} className='rounded-[10px] overflow-hidden relative group shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer'>
                         <img 
                           src={item.image}
-                          loading='lazy' 
                           alt={item.title} 
                           className='w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out'
                         />

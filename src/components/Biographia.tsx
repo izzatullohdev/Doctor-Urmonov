@@ -11,7 +11,6 @@ const Biographia = () => {
       <div className="w-full md:w-[48%] relative">
         <img 
           src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227938/subtrack_ilj9yc.png'
-          loading="lazy" 
           alt="Биография" 
           className="w-full h-auto object-contain rounded-xl"
         />

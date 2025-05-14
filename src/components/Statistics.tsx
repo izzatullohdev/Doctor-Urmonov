@@ -8,7 +8,6 @@ const Statistics = () => {
         <div className="w-full h-full flex justify-center">
           <img 
             src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747055693/Subtract_1_tm0nrp.png"
-            loading="lazy"
             alt={t('about_page.general_title')}
             className="w-full max-w-[600px] h-auto object-contain"
           />

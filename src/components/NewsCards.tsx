@@ -16,7 +16,6 @@ const Cards = () => {
               <img 
                 src={item.image} 
                 alt={item.description} 
-                loading='lazy'
                 className="rounded-t-[10px] w-full h-[300px] object-cover"
               />
               <div className="p-4">

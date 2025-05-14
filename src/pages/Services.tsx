@@ -26,7 +26,6 @@ const Services = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                loading='lazy'
                 className="w-full rounded-[10px]"
               />
               <h1 className='text-[32px] font-montserrat font-medium text-[#0A0933] leading-[140%] mt-7 my-3'>{item.title}</h1>

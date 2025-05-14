@@ -40,7 +40,6 @@ const BlogCardDetails = () => {
           <img
             src={card.big_image}
             alt={card.description}
-            loading='lazy'
             className="w-full rounded-[10px]"
           />
           <div className="grid grid-cols-3 gap-x-4 gap-y-4 py-4 px-1">
@@ -48,7 +47,6 @@ const BlogCardDetails = () => {
               <img
                 key={index}
                 src={img}
-                loading='lazy'
                 alt={`Gallery image ${index + 1}`}
                 className="w-full rounded-[10px]"
               />

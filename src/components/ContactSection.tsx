@@ -54,7 +54,6 @@ const ContactSection: FC = () => {
           <iframe
             className="w-full h-full"
             src="https://maps.google.com/maps?q=Tashkent&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"
           ></iframe>
         </div>
       </div>
