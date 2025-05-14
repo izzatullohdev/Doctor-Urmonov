@@ -1,16 +1,18 @@
+import { useTranslation } from "react-i18next";
 import { useAppContext } from "../context/AppContext";
 
 const Years = () => {
   const { YearsData } = useAppContext();
+  const { t } = useTranslation();
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0 py-20 relative">
       <div className="flex items-center justify-center mb-28">
         <h1
-          title="Хронология профессионального пути"
+          title={t('about_page.general_title')}
           className="text-[#1F2A42] text-[32px] md:text-[48px] font-semibold text-center leading-[140%] lg:w-[50%]"
         >
-          Хронология профессионального пути
+          {t('about_page.general_title')}
         </h1>
       </div>
       <div className="relative mb-32">

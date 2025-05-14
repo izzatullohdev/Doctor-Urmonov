@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Patients = () => {
   const { PatientData } = useAppContext();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div className='max-w-7xl mx-auto bg-[#E7EEFE] rounded-[30px] my-20 px-20 max-md:px-10 p-10'>
-        <h1 title='Отзывы пациентов' className='text-[#1F2A42] text-[48px] font-montserrat font-medium leading-[120%]'>Отзывы пациентов</h1>
+        <h1 title={t('global_title.patients')} className='text-[#1F2A42] text-[48px] font-montserrat font-medium leading-[120%]'>{t('global_title.patients')}</h1>
         <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-y-10 gap-x-16 mt-10">
           {
             PatientData?.map((item) => (
@@ -28,7 +30,7 @@ const Patients = () => {
             className='bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium text-white cursor-pointer px-12 py-4'
             onClick={() => setIsModalOpen(true)}
           >
-            Оставить отзыв
+            {t('global_title.patients_click')}
           </button>
         </div>
       </div>

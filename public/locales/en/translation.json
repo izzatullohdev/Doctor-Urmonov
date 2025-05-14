@@ -1,0 +1,76 @@
+{
+  "pageNames": {
+      "blog": "Blog",
+      "news": "News",
+      "services": "Services",
+      "about": "About"
+  },
+  "navbar": {
+    "button": "Make an Appointment",
+    "home": "Home",
+    "about": "About Me",
+    "service": "Services",
+    "blog": "Blog",
+    "news": "News"
+  },
+  "about": {
+    "title": "Urmonov Umidjon Butabekovich",
+    "desc": "Thoracoabdominal oncologist-surgeon, Candidate of Medical Sciences, top-level oncological surgeon",
+    "button": "Make an Appointment"
+  },
+  "bio": {
+    "sub_title": "Years of",
+    "sub_desc": "professional experience",
+    "title": "Biography",
+    "desc": "My name is Urmonov Umidjon Butabekovich. I am an oncological surgeon. I perform surgeries for tumors of various localizations, emergency surgical interventions, and diagnostic procedures. Thousands of grateful patients and hundreds of successful surgeries are the result of my daily work.",
+    "desc_2": "An experienced surgeon with over 13 years of practice in surgery. He always takes on complex cases with confidence. He began his career at a leading medical institution, where he quickly established himself as a reliable specialist. His mentors include: Academician Prof. Choynzonov E.Ts., Academician Prof. Zikiryakhodjaev D.Z., Prof. Afanasyev S.G., Prof. Khakimov G.A., Prof. Tuzikov S.A., Prof. Yuldoshev R.Z., MD Dobrodeev A.Yu., and PhD Volkov M.Yu.",
+    "button": "Read More"
+  },
+  "global_title": {
+    "cards": "List of Services",
+    "patients": "Patient Reviews",
+    "patients_click": "Leave a Review",
+    "videos": "Videos from Social Media",
+    "info": "Frequently Asked Questions",
+    "info_click": "Still have questions? Contact us!",
+    "telegram": "Contact via Telegram",
+    "whatsup": "Contact via WhatsApp",
+    "contact": "Contacts",
+    "phone": "Phone:",
+    "email": "Email:",
+    "location": "Address:",
+    "button": "Read More",
+    "share":"Share",
+    "swiper": "Related Blogs"
+  },
+  "footer": {
+    "date": "Working Hours",
+    "month": "Monday - Friday",
+    "hours": "Saturday",
+    "menu": "Menu",
+    "home": "Home",
+    "about": "About Me",
+    "service": "Services",
+    "blog": "Work",
+    "media": "Media",
+    "address": {
+      "address": "Address:",
+      "title": "Tashkent City Branch of the Republican Specialized Scientific-Practical Medical Center of Oncology and Radiology",
+      "email": "Email:",
+      "desc": "Urmonov Umidjon Butabekovich. All rights reserved."
+    }
+  },
+  "about_page": {
+    "general_title": "Chronology of Professional Journey",
+    "title_1": "years of experience",
+    "title_2": "scientific articles",
+    "title_3": "satisfied clients",
+    "title_4": "performed surgeries",
+    "about": {
+      "sub_title": "",
+      "sub_desc": ""
+    },
+    "title": "Urmonov Umidjon Butabekovich",
+    "desc": "An experienced surgeon with over 13 years of practice in surgery. He always takes on complex challenges. He began his career at a leading medical institution where he quickly established himself as a reliable specialist. His mentors include: Academician Prof. Choynzonov E.Ts., Academician Prof. Zikiryakhojaev D.Z., Prof. Afanasyev S.G., Prof. Hakimov G.A., Prof. Tuzikov S.A., Prof. Yuldoshev R.Z., Doctor of Medical Sciences Dobrodeev A.Yu., Candidate of Medical Sciences Volkov M.Yu."
+  }
+}

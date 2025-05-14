@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 
 interface VideoItem {
   id: number;
@@ -16,6 +17,8 @@ interface VideoItem {
 }
 
 const Videos: React.FC = () => {
+  const { t } = useTranslation();
+
   const videos: VideoItem[] = [
     {
       id: 1,
@@ -50,8 +53,8 @@ const Videos: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-20 px-4">
-      <h1 className="text-[#0A0933] text-[36px] md:text-[48px] font-semibold text-center mb-10">
-        Видео из социальных сетей
+      <h1 title={t('global_title.videos')} className="text-[#0A0933] text-[36px] md:text-[48px] font-semibold text-center mb-10">
+        {t('global_title.videos')}
       </h1>
       <div className="bg-[#181818] rounded-[10px] p-5">
       <Swiper

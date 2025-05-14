@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useAppContext } from "../context/AppContext"
 import { IoIosArrowDown, IoIosArrowForward, IoMdClose } from "react-icons/io"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 interface InfoItem {
   id: number
@@ -13,6 +14,8 @@ const Information = () => {
   const { InfoData }: { InfoData: InfoItem[] } = useAppContext()
   const [openId, setOpenId] = useState<number | null>(null)
 
+  const { t } = useTranslation();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleOpen = (id: number) => {
@@ -22,8 +25,8 @@ const Information = () => {
   return (
     <>
     <div className="max-w-7xl mx-auto my-20 max-md:px-4">
-      <h1 title="Часто задаваемые вопросы" className="text-[48px] leading-[140%] font-semibold text-center">
-        Часто задаваемые вопросы
+      <h1 title={t('global_title.info')} className="text-[48px] leading-[140%] font-semibold text-center">
+        {t('global_title.info')}
       </h1>
       <div className="flex flex-col items-center justify-center gap-4 px-24 max-md:px-0 mt-10">
         {InfoData?.map((item) => {
@@ -117,7 +120,7 @@ const Information = () => {
           onClick={() => setIsModalOpen(true)}
           className="bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium cursor-pointer text-white px-8 py-5"
         >
-          Остались вопросы? Напишите нам!
+          {t('global_title.info_click')}
         </button>
       </div>
     </div>

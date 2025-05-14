@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import {
   FaFacebookF,
   FaBars,
@@ -9,18 +9,21 @@ import { IoLogoInstagram } from "react-icons/io";
 import { PiTelegramLogo } from "react-icons/pi";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { path: "/", label: "Главная" },
-  { path: "/about", label: "О себе" },
-  { path: "/services", label: "Услуги" },
-  { path: "/blog", label: "Блог" },
-  { path: "/news", label: "Новости" },
-  { path: "/sampi", label: "САМПИ" },
-];
+import { useTranslation } from "react-i18next";
+const Translation = React.lazy(() => import('../components/Translation'));
 
 const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { path: "/", label: t("navbar.home") },
+    { path: "/about", label: t("navbar.about") },
+    { path: "/services", label: t("navbar.service") },
+    { path: "/blog", label: t("navbar.blog") },
+    { path: "/news", label: t("navbar.news") },
+    { path: "/sampi", label: "SAMPI" }
+  ];
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
@@ -38,11 +41,15 @@ const Navbar: FC = () => {
           <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[22px]">
             +998 77 000 26 26
           </a>
-          <button className="bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-4">
-            Записаться на приём
-          </button>
+          <div className="flex items-center gap-3">
+            <button className="w-[210px] h-[60px] bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer">
+              {t('navbar.button')}
+            </button>
+            <Translation />
+          </div>
         </div>
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center gap-3">
+          <Translation />
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -129,7 +136,7 @@ const Navbar: FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                Записаться на приём
+                {t('navbar.button')}
               </motion.button>
               </motion.ul>
             </motion.div>

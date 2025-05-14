@@ -1,20 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
 
 const HomeCards = () => {
   const { UsluguData } = useAppContext();
+  const { t } = useTranslation();
 
   return (
     <div className='max-w-7xl mx-auto max-md:px-4 my-20'>
       <h1 title='Перечень услуг' className='text-[#1F2A42] text-[48px] font-poppins font-bold leading-[140%] text-center'>
-        Перечень услуг
+        {t('global_title.cards')}
       </h1>
       <div className="max-w-7xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-xl:grid-cols-2 mt-16 gap-4">
         {UsluguData?.map((item) => (
           <div
             key={item.id}
-            className='group bg-[#F5F8FF] hover:bg-[#0A0933] hover:text-white 
-                      text-[#0A0933] rounded-[20px] overflow-hidden 
-                      transition-all duration-300 relative p-4'
+            className='group bg-[#F5F8FF] hover:bg-[#0A0933] hover:text-white text-[#0A0933] rounded-[20px] overflow-hidden transition-all duration-300 relative p-4'
           >
             <img
               src={item.image}
@@ -52,7 +52,7 @@ const HomeCards = () => {
                 transition-all duration-300 
                 bg-[#0A6CFB] text-white
               '>
-                {item.button}
+                {t('global_title.button')}
               </button>
 
             </div>

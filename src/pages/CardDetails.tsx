@@ -4,11 +4,14 @@ import { useAppContext } from '../context/AppContext';
 import type { CardTypes } from '../types';
 import { TiArrowForwardOutline } from "react-icons/ti";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useTranslation } from 'react-i18next';
 const Elementary = React.lazy(() => import('../components/Elementary'));
 
 const BlogCardDetails = () => {
   const { id } = useParams();
   const { cardData } = useAppContext();
+
+  const  { t } = useTranslation();
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -77,7 +80,7 @@ const BlogCardDetails = () => {
             <div className="flex items-center gap-2 text-[18px] font-montserrat font-normal text-[#454745] mt-12">
               <p className='border-r-2 border-[#E1E1E1] pr-4'>{card.date}</p>
               <button className='text-[#0A6CFB] flex items-center gap-1'>
-                <span className='font-normal text-[18px]'>Поделиться</span>
+                <span className='font-normal text-[18px]'>{t('global_title.share')}</span>
                 <TiArrowForwardOutline className='text-[19px] mb-[2px]' />
               </button>
             </div>
