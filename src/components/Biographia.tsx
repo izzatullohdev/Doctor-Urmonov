@@ -1,5 +1,4 @@
 import { NavLink, useLocation } from "react-router-dom";
-import subtract from "../assets/subtrack.png";
 import { useTranslation } from "react-i18next";
 
 const Biographia = () => {
@@ -11,7 +10,7 @@ const Biographia = () => {
     <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-10 my-20">
       <div className="w-full md:w-[48%] relative">
         <img 
-          src={subtract}
+          src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227938/subtrack_ilj9yc.png'
           loading="lazy" 
           alt="Биография" 
           className="w-full h-auto object-contain rounded-xl"

@@ -1,7 +1,3 @@
-// import images 
-import bg from "../assets/bg.png";
-import urmonov from "../assets/urmonov.png";
-
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -22,14 +18,14 @@ const About = () => {
                   >{t('about.button')}</button>
               </div>
               <img 
-                src={bg} 
+                src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227887/bg_tjoihm.png' 
                 loading="lazy"
                 alt={t('about.desc')} 
                 className="h-full absolute top-0 left-0"
               />
               <div className="h-[110%] absolute bottom-0 right-0">
                   <img 
-                    src={urmonov}
+                    src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227952/urmonov_hiqohd.png'
                     loading="lazy" 
                     alt={t('about.desc')} 
                     className="h-full relative"

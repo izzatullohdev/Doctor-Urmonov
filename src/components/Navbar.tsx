@@ -49,7 +49,6 @@ const Navbar: FC = () => {
           </div>
         </div>
         <div className="lg:hidden flex items-center gap-3">
-          <Translation />
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -162,10 +161,11 @@ const Navbar: FC = () => {
           <FaFacebookF className="hover:text-blue-600 cursor-pointer" size={18}/>
         </motion.div>
         <motion.div
-          className="flex items-center gap-2 text-base"
+          className="flex items-center gap-3"
           variants={{ visible: {}, hidden: {} }}
         >
           <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[17px]">+998 77 000 26 26</a>
+          <Translation />
          </motion.div>
       </motion.div>
     </header>
