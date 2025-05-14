@@ -3,7 +3,6 @@ import {
   FaFacebookF,
   FaBars,
   FaTimes,
-  FaPhoneAlt,
 } from "react-icons/fa";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { IoLogoInstagram } from "react-icons/io";
@@ -25,7 +24,7 @@ const Navbar: FC = () => {
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-6 px-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-6 max-lg:py-4 px-4">
         <NavLink to={"/"} className="font-poppins font-extrabold text-[30px] sm:text-[36px] text-gray-900">
           Doctor Urmonov
         </NavLink>
@@ -68,7 +67,7 @@ const Navbar: FC = () => {
           </motion.button>
         </div>
       </div>
-      <nav className="border-t border-gray-200 bg-[#F8F9FF]">
+      <nav className="bg-[#F8F9FF]">
         <ul className="max-w-7xl mx-auto px-4 gap-10 py-[0px] text-[18px] font-medium text-[#454745] hidden lg:flex">
           {navLinks.map(({ path, label }) => (
             <li key={path} className="py-5">
@@ -94,33 +93,6 @@ const Navbar: FC = () => {
               transition={{ duration: 0.3 }}
               className="lg:hidden flex flex-col gap-4 px-6 py-4 text-[18px] text-[#454745] font-medium"
             >
-              <motion.div
-                className="flex justify-between items-center"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.1 } },
-                  hidden: {},
-                }}
-              >
-                <motion.div
-                  className="flex gap-4 text-xl"
-                  variants={{ visible: {}, hidden: {} }}
-                >
-                  <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
-                  <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
-                  <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
-                  <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center gap-2 text-base"
-                  variants={{ visible: {}, hidden: {} }}
-                >
-                  <FaPhoneAlt /> 
-                  <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[18px]">+998 77 000 26 26</a>
-                </motion.div>
-              </motion.div>
               <motion.ul
                 className="flex flex-col gap-4"
                 initial="hidden"
@@ -164,6 +136,31 @@ const Navbar: FC = () => {
           )}
         </AnimatePresence>
       </nav>
+      <motion.div
+        className="flex justify-between items-center lg:hidden border-t border-[#00000054] px-4"
+         initial="hidden"
+         animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.1 } },
+          hidden: {},
+         }}
+       >
+         <motion.div
+          className="flex items-center text-[#1F2A42] gap-4 py-4"
+          variants={{ visible: {}, hidden: {} }}
+        >
+          <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
+          <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
+          <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
+          <FaFacebookF className="hover:text-blue-600 cursor-pointer" size={18}/>
+        </motion.div>
+        <motion.div
+          className="flex items-center gap-2 text-base"
+          variants={{ visible: {}, hidden: {} }}
+        >
+          <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[17px]">+998 77 000 26 26</a>
+         </motion.div>
+      </motion.div>
     </header>
   );
 };

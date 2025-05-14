@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
-import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Patients = () => {
@@ -40,26 +39,23 @@ const Patients = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setIsModalOpen(false)}
           >
             <motion.div
-              className="w-4xl max-md:w-[80vw] h-[60%] max-md:h-[90%] bg-white rounded-xl overflow-y-auto relative p-5"
+              className="w-3xl max-md:w-[80vw] h-[50%] max-md:h-[90%] bg-[#F5F8FF] rounded-xl overflow-y-auto relative flex items-center justify-center p-5"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <IoMdClose
-                size={28}
-                className='absolute cursor-pointer text-gray-700 right-4 top-4 z-[999]'
-                onClick={() => setIsModalOpen(false)}
-              />
-              <div className="flex flex-col items-center mt-10">
-                <h1 title='Отзывы пациентов' className='font-semibold text-[#0A0933] font-montserrat text-4xl'>Отзывы пациентов</h1>
-                <form action="" className='w-xl rounded-[10px] shadow flex flex-col mt-10 p-5'>
-                  <input type="text" />
-                  <input type="text" />
-                  <input type="text" />
-                  <button></button>
+              <div className="flex flex-col items-center mt-5">
+                <h1 title='Записаться на приём' className='font-semibold text-[#0A0933] font-montserrat text-[32px]'>Записаться на приём</h1>
+                <form action="" className='w-lg rounded-[10px] flex flex-col gap-5 p-5'>
+                  <input type="text" placeholder='Имя' className='outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4'/>
+                  <input type="text" placeholder='Телефон' className='outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4'/>
+                  <input type="text" placeholder='Сообшение' className='outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] py-8 px-5'/>
+                  <button className='text-white bg-[#0A6CFB] rounded-[5px] text-[16px] font-montserrat font-medium py-4'>Отправить</button>
                 </form>
               </div>
             </motion.div>

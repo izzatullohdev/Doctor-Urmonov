@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,6 +7,10 @@ const Elementary = React.lazy(() => import('../components/Elementary'));
 const Services = () => {
   const { serviceData } = useAppContext();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const toggleDesc = (index: number) => {
     setOpenIndex(prev => (prev === index ? null : index));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 const Elementary = React.lazy(() => import('../components/Elementary'));
@@ -17,6 +17,10 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const BlogDetails = () => {
   const { id } = useParams();
   const { BlogData } = useAppContext();
+
+  useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const blog = BlogData?.find(item => String(item.id) === id);
 
