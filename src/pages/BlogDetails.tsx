@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-const Elementary = React.lazy(() => import('../components/Elementary'));
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-// import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import Elementary from '../components/Elementary';
 
 const BlogDetails = () => {
   const { id } = useParams();

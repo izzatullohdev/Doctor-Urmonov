@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import {
   FaFacebookF,
   FaBars,
@@ -10,7 +10,7 @@ import { PiTelegramLogo } from "react-icons/pi";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-const Translation = React.lazy(() => import('../components/Translation'));
+import Translation from "../components/Translation";
 
 const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);

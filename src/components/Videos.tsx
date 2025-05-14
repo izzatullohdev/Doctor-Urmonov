@@ -1,14 +1,9 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { useTranslation } from 'react-i18next';
 
 interface VideoItem {
   id: number;

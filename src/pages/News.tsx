@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-// import elementary and cards components
-const Elementary = React.lazy(() => import('../components/Elementary')); 
-const Cards = React.lazy(() => import('../components/NewsCards'));
+import { useEffect } from 'react';
+import Elementary from '../components/Elementary';
+import Cards from '../components/NewsCards';
 
 const News = () => {
   useEffect(() => {

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-const Elementary = React.lazy(() => import('../components/Elementary'));
-const Statistics = React.lazy(() => import('../components/Statistics'));
-const Biographia = React.lazy(() => import('../components/Biographia'));
-const Years = React.lazy(() => import('../components/Years'));
+import { useEffect } from 'react';
+import Elementary from '../components/Elementary';
+import Statistics from '../components/Statistics';
+import Biographia from '../components/Biographia';
+import Years from '../components/Years';
 
 const About = () => {
   useEffect(() => {

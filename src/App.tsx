@@ -1,15 +1,13 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RouterLayout from "./layout/RouterLayout";
 import { AppProvider } from "./context/AppContext";
-
-const Home = React.lazy(() => import('./pages/Home'));
-const Blog = React.lazy(() => import('./pages/Blog'));
-const News = React.lazy(() => import('./pages/News'));
-const About = React.lazy(() => import('./pages/About'));
-const Services = React.lazy(() => import('./pages/Services'));
-const BlogDetails = React.lazy(() => import('./pages/BlogDetails'))
-const CardDetails = React.lazy(() => import('./pages/CardDetails'));
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import News from "./pages/News";
+import About from "./pages/About";
+import RouterLayout from "./layout/RouterLayout";
+import Services from "./pages/Services";
+import BlogDetails from "./pages/BlogDetails";
+import CardDetails from "./pages/CardDetails";
 
 const App = () => {
   const router = createBrowserRouter([

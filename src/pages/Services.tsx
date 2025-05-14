@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
-const Elementary = React.lazy(() => import('../components/Elementary'));
+import Elementary from '../components/Elementary';
 
 const Services = () => {
   const { serviceData } = useAppContext();

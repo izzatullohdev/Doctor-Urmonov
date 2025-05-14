@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import type { CardTypes } from '../types';
 import { TiArrowForwardOutline } from "react-icons/ti";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
-const Elementary = React.lazy(() => import('../components/Elementary'));
+import Elementary from '../components/Elementary';
 
 const BlogCardDetails = () => {
   const { id } = useParams();
