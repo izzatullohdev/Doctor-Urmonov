@@ -41,7 +41,8 @@
     "location": "Manzil:",
     "button": "Batafsil",
     "share":"Ulanish",
-    "swiper": "O‘xshash bloglar"
+    "swiper": "O‘xshash bloglar",
+    "patient":"Bemorni qo‘shish"
   },
   "footer": {
     "date": "Ish vaqti",
@@ -72,5 +73,21 @@
     },
     "title": "Urmonov Umidjon Butabekovich",
     "desc": "13 yildan ortiq jarrohlik tajribasiga ega tajribali xirurg. Har doim murakkab vazifalarni bajarishga tayyor. Faoliyatini yetakchi tibbiyot muassasasida boshlagan va tez orada ishonchli mutaxassis sifatida tanilgan. Ustozlari: akademik prof. Choynzonov E.Ts., akademik prof. Zikiryaxo‘jayev D.Z., prof. Afanasyev S.G., prof. Hakimov G.A., prof. Tuzikov S.A., prof. Yo‘ldoshev R.Z., t.f.d. Dobrodeyev A.Yu., t.f.n. Volkov M.Yu."
+  },
+  "form": {
+    "title_label": "Sarlavha",
+    "title_placeholder": "Sarlavhani kiriting",
+    "description_label": "Tavsif",
+    "description_placeholder": "Tavsifni kiriting",
+    "image_label": "Rasm",
+    "image_upload_text": "Rasm yuklash uchun bosing",
+    "image_format_hint": "PNG, JPG, WEBP (maks. 5MB)",
+    "save_button": "Saqlash",
+    "edit_image": "Tahrirlash",
+    "title": "Qabulga yozilish",
+    "name": "Ism",
+    "phone": "Telefon",
+    "message": "Xabar",
+    "send": "Yuborish"
   }
 }

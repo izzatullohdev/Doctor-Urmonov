@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppContext } from "../context/AppContext"
-import { IoIosArrowDown, IoIosArrowForward, IoMdClose } from "react-icons/io"
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTranslation } from "react-i18next"
 
@@ -129,25 +129,45 @@ const Information = () => {
           <motion.div
             className="w-screen h-screen bg-[#0000004d] flex items-center justify-center fixed left-0 top-0 z-50"
             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             exit={{ opacity: 0 }}
-           >
-             <motion.div
-               className="w-4xl max-md:w-[80vw] h-[60%] max-md:h-[90%] bg-white rounded-xl overflow-y-auto relative p-5"
-               initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsModalOpen(false)}
+          >
+            <motion.div
+              className="w-lg max-md:w-[90vw] bg-[#F5F8FF] rounded-xl overflow-y-auto relative flex items-center justify-center p-5"
+              initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-               exit={{ scale: 0.8, opacity: 0 }}
+              exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-             >
-               <IoMdClose
-                 size={28}
-                 className='absolute cursor-pointer text-gray-700 right-4 top-4 z-[999]'
-                 onClick={() => setIsModalOpen(false)}
-               />
-               <h2 className='text-xl font-bold'>Fikringizni yozing</h2>
-             </motion.div>
-           </motion.div>
-         )}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col items-center w-full">
+                <h1 className="font-semibold text-[#0A0933] font-montserrat text-[32px] mb-6">{t('global_title.info')}</h1>
+                <form className="w-full rounded-[10px] flex flex-col gap-5 p-2">
+                  <div className="flex flex-col gap-2">
+                    <input
+                      type="text"
+                      id="title"
+                      placeholder={t('form.title_placeholder')}
+                      className="outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4 transition-all focus:shadow-md focus:border-[#0848a0]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <textarea
+                      id="description"
+                      placeholder={t('form.description_placeholder')}
+                      rows={4}
+                      className="outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4 resize-none transition-all focus:shadow-md focus:border-[#0848a0]"
+                    />
+                  </div>
+                  <button className="text-white bg-[#0A6CFB] rounded-[5px] text-[16px] font-montserrat font-medium py-4 mt-2 hover:bg-[#0848a0] transition-colors">
+                    {t('form.save_button')}
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   )

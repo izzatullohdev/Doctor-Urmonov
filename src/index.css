@@ -5,6 +5,10 @@
   box-shadow: 3px 12px #fff !important;
 }
 
+button {
+  cursor: pointer !important;
+}
+
 @font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");

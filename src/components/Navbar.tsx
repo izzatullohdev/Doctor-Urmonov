@@ -13,8 +13,9 @@ import { useTranslation } from "react-i18next";
 import Translation from "../components/Translation";
 
 const Navbar: FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navLinks = [
     { path: "/", label: t("navbar.home") },
@@ -26,6 +27,7 @@ const Navbar: FC = () => {
   ];
 
   return (
+    <>
     <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-6 max-lg:py-4 px-4">
         <NavLink to={"/"} className="font-poppins font-extrabold text-[30px] sm:text-[36px] text-gray-900">
@@ -42,7 +44,10 @@ const Navbar: FC = () => {
             +998 77 000 26 26
           </a>
           <div className="flex items-center gap-3">
-            <button className="w-[210px] h-[60px] bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="w-[210px] h-[60px] bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer"
+            >
               {t('navbar.button')}
             </button>
             <Translation />
@@ -130,6 +135,7 @@ const Navbar: FC = () => {
                   </motion.li>
                 ))}
                 <motion.button
+                onClick={() => setIsModalOpen(true)}
                 className="w-full bg-[#0A6CFB] font-montserrat text-white rounded-md cursor-pointer p-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -169,6 +175,58 @@ const Navbar: FC = () => {
          </motion.div>
       </motion.div>
     </header>
+    <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="w-screen h-screen bg-[#0000004d] flex items-center justify-center fixed left-0 top-0 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsModalOpen(false)}
+          >
+            <motion.div
+              className="lg:w-xl w-[95vw] bg-[#F5F8FF] rounded-xl relative flex flex-col items-center justify-start pb-10 p-5"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col items-center mt-5 w-full max-w-lg">
+                <h1
+                  title={t("form.title")}
+                  className="font-semibold text-[#0A0933] font-montserrat text-[32px] mb-5"
+                >
+                  {t("form.title")}
+                </h1>
+                <form className="w-full rounded-[10px] flex flex-col gap-5 p-2">
+                  <input
+                    type="text"
+                    placeholder={t("form.name")}
+                    className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4"
+                  />
+                  <input
+                    type="text"
+                    placeholder={t("form.phone")}
+                    className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4"
+                  />
+                  <textarea
+                    placeholder={t("form.message")}
+                    className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] py-4 px-5 resize-y min-h-[120px]"
+                  />
+                  <button
+                    type="submit"
+                    className="text-white bg-[#0A6CFB] rounded-[5px] text-[16px] font-montserrat font-medium py-4"
+                  >
+                    {t("form.send")}
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
