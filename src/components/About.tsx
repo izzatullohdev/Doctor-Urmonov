@@ -1,14 +1,65 @@
-import { useTranslation } from "react-i18next";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useTranslation } from "react-i18next"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 
 const About = () => {
-  const { t } = useTranslation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const _api = import.meta.env.VITE_API
+  const { t } = useTranslation()
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [notification, setNotification] = useState<null | { type: "success" | "error"; message: string }>(null)
+
+  const [formData, setFormData] = useState({
+    full_name: "",
+    phone: "",
+    message: "",
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!formData.full_name || !formData.phone || !formData.message) {
+      showNotification("error", t("form.required"))
+      return
+    }
+
+    try {
+      const response = await fetch(`${_api}/contact/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setFormData({ full_name: "", phone: "", message: "" })
+        setIsModalOpen(false)
+        showNotification("success", t("form.success"))
+      } else {
+        showNotification("error", t("form.error"))
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      showNotification("error", t("form.error"))
+    }
+  }
+
+  const showNotification = (type: "success" | "error", message: string) => {
+    setNotification({ type, message })
+    setTimeout(() => setNotification(null), 3000)
+  }
 
   return (
     <>
-      {/* Desktop va katta ekranlar uchun */}
       <div className="bg-[#F5F8FF] mt-[300px] my-20 max-xl:px-4 max-sm:px-0 max-md:hidden">
         <div className="max-w-7xl mx-auto max-md:px-4 max-sm:px-0 flex max-md:flex-col items-center justify-between relative pt-12 pb-18">
           <div className="w-[58%]">
@@ -42,8 +93,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobil va kichik ekranlar uchun */}
       <div className="md:hidden max-lg:mt-[200px] flex flex-col bg-[#F5F8FF] relative pt-8 px-4">
         <img
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747205024/Group_2_qx3zt1.png"
@@ -56,9 +105,7 @@ const About = () => {
         >
           {t("about.title")}
         </h1>
-        <p className="relative text-[#0A0933] text-[18px] font-montserrat font-medium my-4">
-          {t("about.desc")}
-        </p>
+        <p className="relative text-[#0A0933] text-[18px] font-montserrat font-medium my-4">{t("about.desc")}</p>
         <img
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747204776/IMG_0904_2_2_zx90fa.png"
           alt={t("about.desc")}
@@ -71,8 +118,6 @@ const About = () => {
           {t("about.button")}
         </button>
       </div>
-
-      {/* Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -91,24 +136,30 @@ const About = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col items-center mt-5 w-full max-w-lg">
-                <h1
-                  title={t("form.title")}
-                  className="font-semibold text-[#0A0933] font-montserrat text-[32px] mb-5"
-                >
+                <h1 className="font-semibold text-[#0A0933] font-montserrat text-[32px] mb-5">
                   {t("form.title")}
                 </h1>
-                <form className="w-full rounded-[10px] flex flex-col gap-5 p-2">
+                <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 p-2">
                   <input
                     type="text"
+                    name="full_name"
+                    value={formData.full_name}
+                    onChange={handleInputChange}
                     placeholder={t("form.name")}
                     className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4"
                   />
                   <input
                     type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     placeholder={t("form.phone")}
                     className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] px-5 py-4"
                   />
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder={t("form.message")}
                     className="w-full outline-none text-[#454745] placeholder:text-[#454745] rounded-[5px] bg-white border border-[#0A6CFB] py-4 px-5 resize-y min-h-[120px]"
                   />
@@ -124,8 +175,24 @@ const About = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
-  );
-};
 
-export default About;
+      {/* Notifikatsiya */}
+      <AnimatePresence>
+        {notification && (
+          <motion.div
+            className={`fixed top-5 left-[50%] translate-x-[-50%] z-[9999] rounded-lg px-5 py-3 text-white font-medium shadow-xl ${
+              notification.type === "success" ? "bg-green-500" : "bg-red-500"
+            }`}
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+          >
+            {notification.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}
+
+export default About

@@ -1,9 +1,9 @@
 {
   "pageNames": {
-      "blog": "Blogger",
+      "blog": "Blog",
       "news": "Yangiliklar",
       "services": "Xizmatlar",
-      "about": "Haqqida"
+      "about": "Haqida"
   },
   "navbar": {
     "button": "Qabulga yozilish",
@@ -88,6 +88,9 @@
     "name": "Ism",
     "phone": "Telefon",
     "message": "Xabar",
-    "send": "Yuborish"
+    "send": "Yuborish",
+    "success": "Xabar muvaffaqiyatli yuborildi!",
+    "error": "Xabar yuborishda xatolik yuz berdi. Iltimos, qaytadan urinib ko‘ring.",
+    "required": "Iltimos, barcha maydonlarni to‘ldiring!"
   }
 }
