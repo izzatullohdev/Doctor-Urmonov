@@ -7,24 +7,24 @@ const Biographia = () => {
   const isAboutPage = location.pathname === "/about";
 
   return (
-    <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-10 my-20">
-      <div className="w-full md:w-[48%] relative">
+    <div className="max-w-7xl mx-auto px-4 flex max-lg:flex-col items-center justify-between gap-10 my-20">
+      <div className="w-2xl max-sm:w-md max-md:w-lg relative">
         <img 
           src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227938/subtrack_ilj9yc.png'
           alt="Биография" 
-          className="w-full h-auto object-contain rounded-xl"
+          className="object-contain rounded-xl"
         />
-        <div className="w-[48%] h-[22%] flex items-end justify-start absolute bottom-0 left-0 pt-2 pr-2">
+        <div className="w-[46.5%] max-sm:w-[48%] max-md:w-[47.7%] max-lg:w-[45.5%] h-[22%] flex items-end justify-start absolute bottom-0 left-0 pt-2 pr-2">
           <button className="w-full h-full bg-[#0A6CFB] rounded-[10px] text-white flex items-center gap-3 font-montserrat p-1">
-            <h3 title="13+" className="font-semibold text-[24px] sm:text-[28px] md:text-[30px] lg:text-[32px]">13+</h3>
+            <h3 title="13+" className="font-semibold text-[35px] max-sm:text-[25px] max-md:text-[28px] max-lg:text-[30px]">13+</h3>
             <span className="flex flex-col items-start">
-              <h4 title="Летний" className="font-medium text-[16px] sm:text-[22px] md:text-[18px] lg:text-[24px]">{t('bio.sub_title')}</h4>
-              <p className="text-[10px] sm:text-[14px] md:text-[10px] lg:text-[16px]">{t('bio.sub_desc')}</p>
+              <h4 title="Летний" className="text-[30px] max-sm:text-[15px] max-md:text-[18px] max-lg:text-[25px] font-semibold font-montserrat">{t('bio.sub_title')}</h4>
+              <p className="text-[18px] max-sm:text-[12px] max-md:text-[14px] max-lg:text-[18px] font-montserrat">{t('bio.sub_desc')}</p>
             </span>
           </button>
         </div>
       </div>
-      <div className="w-full md:w-[45%] flex flex-col items-start gap-5">
+      <div className="w-full lg:w-[45%] flex flex-col items-start gap-5">
         {isAboutPage ? (
           <>
             <h1 
