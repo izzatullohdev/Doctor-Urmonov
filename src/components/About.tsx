@@ -1,11 +1,20 @@
 import { useTranslation } from "react-i18next"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+interface dataTypes {
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+  subtitle_uz: string;
+  subtitle_ru: string;
+  subtitle_en: string;
+}
 
 const About = () => {
-  const _api = import.meta.env.VITE_API
-  const { t } = useTranslation()
-
+  const _api = import.meta.env.VITE_API;
+  const { t, i18n } = useTranslation();
+  const [data, setData] = useState<dataTypes | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [notification, setNotification] = useState<null | { type: "success" | "error"; message: string }>(null)
 
@@ -53,6 +62,17 @@ const About = () => {
     }
   }
 
+  useEffect(() => {
+    fetch(`${_api}/banner/`)
+    .then(res => res.json())
+    .then(data => {
+      setData(data);
+    })
+    .catch(err => {
+       console.error("ma'lumotlarni olishda xatolik:", err);
+    });
+  }, []);
+
   const showNotification = (type: "success" | "error", message: string) => {
     setNotification({ type, message })
     setTimeout(() => setNotification(null), 3000)
@@ -64,13 +84,31 @@ const About = () => {
         <div className="max-w-7xl mx-auto max-md:px-4 max-sm:px-0 flex max-md:flex-col items-center justify-between relative pt-12 pb-18">
           <div className="w-[58%]">
             <h1
-              title={t("about.title")}
+              title={
+                i18n.language === "uz"
+                ? data?.title_uz
+                : i18n.language === "ru"
+                ? data?.title_ru
+                : data?.title_en
+              }
               className="font-bold text-[#0A0933] font-poppins text-[75px] leading-[140%] relative z-20"
             >
-              {t("about.title")}
+              {
+                i18n.language === "uz"
+                ? data?.title_uz
+                : i18n.language === "ru"
+                ? data?.title_ru
+                : data?.title_en
+              }
             </h1>
             <p className="text-[#0A0933] text-[36px] max-xl:text-[20px] max-md:text-[14px] max-sm:text-[10px] font-montserrat font-medium relative z-20 my-5 mb-10">
-              {t("about.desc")}
+              {
+                i18n.language === "uz"
+                ? data?.subtitle_uz
+                : i18n.language === "ru"
+                ? data?.subtitle_ru
+                : data?.subtitle_en
+              }
             </p>
             <button
               onClick={() => setIsModalOpen(true)}

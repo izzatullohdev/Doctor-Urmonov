@@ -1,9 +1,31 @@
 import { useTranslation } from "react-i18next";
-import { useAppContext } from "../context/AppContext";
+import { useEffect, useState } from "react";
+
+interface dataTypes {
+  id: string;  
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+}
 
 const Years = () => {
-  const { YearsData } = useAppContext();
-  const { t } = useTranslation();
+  const _api = import.meta.env.VITE_API;
+  const { t, i18n } = useTranslation();
+  const [data, setData] = useState<dataTypes[]>([]);
+
+  useEffect(() => {
+    fetch(`${_api}/our-mission/`)
+      .then(res => res.json())
+      .then(data => {
+        setData(Array.isArray(data) ? data : [data]);
+      })
+      .catch(err => {
+         console.error("ma'lumotlarni olishda xatolik:", err);
+      });
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0 py-20 relative">
@@ -17,20 +39,34 @@ const Years = () => {
       </div>
       <div className="relative mb-32">
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2 h-[98.2%] w-1 bg-blue-500 z-0"></div>
-        {YearsData?.map((item, idx) => {
+        {data.map((item, idx) => {
           const isLeft = idx % 2 === 0;
-          const yearFontSize = typeof item.years === 'number' ? 'text-[36px]' : 'text-[22px] my-3';
+          const yearFontSize = (typeof item.id === 'string' && item.id.length < 6) ? 'text-[36px]' : 'text-[22px] my-3';
           return (
             <div key={item.id} className="relative flex flex-col md:flex-row items-center justify-between">
               {isLeft && (
                 <div className="w-full md:w-5/10 flex justify-end md:pr-1 z-10">
                   <div className="rounded-lg w-full">
                     <h2 className={`text-[#0A6CFB] font-semibold font-poppins text-end pr-5 ${yearFontSize}`}>
-                      {item.years}
+                      {
+                        i18n.language === "uz"
+                        ? item.title_uz
+                        : i18n.language === "ru"
+                        ? item.title_ru
+                        : item.title_en
+                      }
                     </h2>
-                    <p className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-end text-base whitespace-pre-line pl-16 px-5 py-2">
-                      {item.title}
-                    </p>
+                    <div
+                      className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-end text-base whitespace-pre-line pl-16 px-5 py-2"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          i18n.language === "uz"
+                            ? item.description_uz || ""
+                            : i18n.language === "ru"
+                            ? item.description_ru || ""
+                            : item.description_en || ""
+                      }}
+                    ></div>
                   </div>
                 </div>
               )}
@@ -39,12 +75,34 @@ const Years = () => {
               {!isLeft && (
                 <div className="w-full md:w-5/10 flex justify-start md:pl-1 z-10">
                   <div className="rounded-lg w-full">
-                    <h2 className={`text-[#0A6CFB] font-semibold font-poppins text-start pl-5 ${yearFontSize}`}>
-                      {item.years}
+                    <h2
+                      title={
+                        i18n.language === "uz"
+                        ? item.title_uz
+                        : i18n.language === "ru"
+                        ? item.title_ru
+                        : item.title_en
+                      }
+                      className={`text-[#0A6CFB] font-semibold font-poppins text-start pl-5 ${yearFontSize}`}>
+                      {
+                        i18n.language === "uz"
+                        ? item.title_uz
+                        : i18n.language === "ru"
+                        ? item.title_ru
+                        : item.title_en
+                      }
                     </h2>
-                    <p className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-start text-base whitespace-pre-line pr-16 px-5 py-2">
-                      {item.title}
-                    </p>
+                    <div
+                      className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-end text-base whitespace-pre-line pl-16 px-5 py-2"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          i18n.language === "uz"
+                            ? item.description_uz || ""
+                            : i18n.language === "ru"
+                            ? item.description_ru || ""
+                            : item.description_en || ""
+                      }}
+                    ></div>
                   </div>
                 </div>
               )}

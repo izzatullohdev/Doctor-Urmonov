@@ -1,10 +1,52 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+
+interface bioTypes {
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+}
+
+interface bioTypes {
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+  experience: string;
+}
 
 const Biographia = () => {
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isAboutPage = location.pathname === "/about";
+  const [bioData, setBioData] = useState<bioTypes | null>(null);
+  const [bio, setBio] = useState<bioTypes | null>(null);
+  const _api = import.meta.env.VITE_API;
+  
+  useEffect(() => {
+    fetch(`${_api}/about-us/`)
+      .then(res => res.json())
+      .then(data => {
+        setBioData(data);
+      })
+      .catch(err => {
+         console.error("ma'lumotlarni olishda xatolik:", err);
+      });
+  }, []);
+
+  useEffect(() => {
+      fetch(`${_api}/biography/`)
+        .then(res => res.json())
+        .then(data => {
+          setBio(data);
+        })
+        .catch(err => {
+           console.error("ma'lumotlarni olishda xatolik:", err);
+        });
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 flex max-lg:flex-col items-center justify-between gap-10 my-20">
@@ -16,7 +58,12 @@ const Biographia = () => {
         />
         <div className="w-[46.5%] max-sm:w-[48%] max-md:w-[47.7%] max-lg:w-[45.5%] h-[22%] flex items-end justify-start absolute bottom-0 left-0 pt-2 pr-2">
           <button className="w-full h-full bg-[#0A6CFB] rounded-[10px] text-white flex items-center gap-3 font-montserrat p-1">
-            <h3 title="13+" className="font-semibold text-[35px] max-sm:text-[25px] max-md:text-[28px] max-lg:text-[30px]">13+</h3>
+            <h3 
+              title={bio?.experience}
+              className="font-semibold text-[35px] max-sm:text-[25px] max-md:text-[28px] max-lg:text-[30px]"
+            >
+              {bio?.experience}+
+            </h3>
             <span className="flex flex-col items-start">
               <h4 title="Летний" className="text-[30px] max-sm:text-[15px] max-md:text-[18px] max-lg:text-[25px] font-semibold font-montserrat">{t('bio.sub_title')}</h4>
               <p className="text-[18px] max-sm:text-[12px] max-md:text-[14px] max-lg:text-[18px] font-montserrat">{t('bio.sub_desc')}</p>
@@ -33,21 +80,49 @@ const Biographia = () => {
             >
               {t('bio.title')}
             </h1>
-            <p className="text-[16px] sm:text-[18px] md:text-[20px] font-medium font-montserrat leading-[140%] text-[#454745]">
-              {t('bio.desc_2')}
-            </p>
+            <div
+              className="text-[16px] sm:text-[18px] md:text-[20px] font-medium font-montserrat leading-[140%] text-[#454745]"
+              dangerouslySetInnerHTML={{
+                __html:
+                  i18n.language === "uz"
+                    ? bioData?.description_uz || ""
+                    : i18n.language === "ru"
+                    ? bioData?.description_ru || ""
+                    : bioData?.description_en || ""
+              }}
+            ></div>
           </>
         ) : (
           <>
             <h1 
-              title={t('bio.title')} 
+              title={
+                  i18n.language === "uz"
+                  ? bio?.title_uz
+                  : i18n.language === "ru"
+                  ? bio?.title_ru
+                  : bio?.title_en
+                }
               className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[44px] leading-[140%] font-montserrat font-semibold text-[#0A0933]"
             >
-              {t('bio.title')}
+              {
+                i18n.language === "uz"
+                ? bio?.title_uz
+                : i18n.language === "ru"
+                ? bio?.title_ru
+                : bio?.title_en
+              }
             </h1>
-            <p className="text-[18px] sm:text-[20px] md:text-[22px] font-medium font-montserrat leading-[140%] text-[#454745]">
-              {t('bio.desc')}
-            </p>
+            <div
+              className="text-[18px] sm:text-[20px] md:text-[22px] font-medium font-montserrat leading-[140%] text-[#454745]"
+              dangerouslySetInnerHTML={{
+                __html:
+                  i18n.language === "uz"
+                    ? bio?.description_uz || ""
+                    : i18n.language === "ru"
+                    ? bio?.description_ru || ""
+                    : bio?.description_en || ""
+              }}
+            ></div>
             <NavLink 
               to='/about' 
               className="bg-[#0A6CFB33] text-[#0A6CFB] font-poppins font-semibold text-[18px] sm:text-[20px] rounded-[5px] px-8 sm:px-10 py-2.5 sm:py-3 transition-all duration-300 hover:bg-[#0A6CFB55]"

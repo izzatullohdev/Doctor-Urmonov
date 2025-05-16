@@ -36,7 +36,7 @@ const App = () => {
           element: <Services />
         },
         {
-          path: "/card/:id",
+          path: "/new/:id",
           element: <CardDetails />
         },
         {

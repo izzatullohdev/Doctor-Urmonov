@@ -1,32 +1,86 @@
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
+
+interface cardItem {
+  uuid: string;
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+  image: string;
+  date: string;
+  hashtags: [string];
+}
 
 const Cards = () => {
-  const { cardData } = useAppContext();
-
+  const { t, i18n } = useTranslation();
+  const _api = import.meta.env.VITE_API;
+  
+  const [card, setCard] = useState<cardItem[]>([]);
+  
+  useEffect(() => {
+    fetch(`${_api}/news/`)
+      .then((res) => res.json())
+      .then((data) => {
+         if (Array.isArray(data)) {
+          setCard(data);
+        } else {
+           setCard([]);
+        }
+       })
+      .catch((err) => {
+        console.error("Ma'lumotlarni olishda xatolik:", err);
+       });
+  }, []);
+  
   return (
     <div className="mb-52">
       <div className="max-w-7xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-xl:grid-cols-2 gap-x-4 gap-y-12">
         {
-          cardData?.map((item) => (
-            <div key={item.id} className="bg-[#F4F5F8] rounded-[10px] relative">
-              <div className="absolute top-2 right-2 z-30 text-[#0A6CFB] bg-white rounded-[50px] font-normal font-poppins px-3 py-1">
-                {item.type}
-              </div>
+          card?.map((item) => (
+            <div key={item.uuid} className="bg-[#F4F5F8] rounded-[10px] flex flex-col justify-between items-center">
               <img 
-                src={item.image} 
-                alt={item.description} 
+                src={`https://urmonov.novacode.uz/${item.image}`} 
+                alt={i18n.language === "uz"
+                    ? item.title_uz
+                    : i18n.language === "ru"
+                    ? item.title_ru
+                    : item.title_en
+                  } 
                 className="rounded-t-[10px] w-full h-[300px] object-cover"
               />
-              <div className="p-4">
-                <h2 className="text-[20px] sm:text-[22px] text-[#1F2A42] font-semibold pb-3">
-                  {item.title}
-                </h2>
-                <p className="text-[14px] sm:text-[16px] text-[#1F2A42] mb-4">
-                  {item.description}
-                </p>
-                <NavLink to={`/card/${item.id}`} className="w-full flex justify-center rounded-[10px] bg-[#0A6CFB] text-white font-medium text-[16px] sm:text-[18px] lg:text-[20px] py-3 hover:bg-[#085cd6] transition-colors duration-200 mt-6">
-                  {item.button}
+              <h2 title={
+                i18n.language === "uz"
+                  ? item.title_uz
+                  : i18n.language === "ru"
+                  ? item.title_ru
+                  : item.title_en
+                } 
+                className="text-[20px] sm:text-[22px] text-[#1F2A42] font-semibold px-4 py-3">
+                {i18n.language === "uz"
+                  ? item.title_uz
+                  : i18n.language === "ru"
+                  ? item.title_ru
+                  : item.title_en
+                }
+              </h2>
+              <div
+                className="text-[14px] sm:text-[16px] text-[#1F2A42] px-4"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    i18n.language === "uz"
+                      ? item?.description_uz
+                       : i18n.language === "ru"
+                       ? item?.description_ru
+                       : item?.description_en
+                }}
+              ></div>
+              <div className="w-full p-4">
+                <NavLink to={`/new/${item.uuid}`} className="w-full flex justify-center rounded-[10px] bg-[#0A6CFB] text-white font-medium text-[16px] sm:text-[18px] lg:text-[20px] py-3 hover:bg-[#085cd6] transition-colors duration-200 mt-6">
+                  {t('global_title.button')}
                 </NavLink>
               </div>
             </div>

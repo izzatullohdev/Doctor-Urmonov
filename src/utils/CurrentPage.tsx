@@ -8,30 +8,34 @@ export const useCurrentPage = () => {
 
   const pageNames: Record<string, string> = {
     blog: t("pageNames.blog"),
-    news: t("pageNames.news"), 
+    news: t("pageNames.news"),
     services: t("pageNames.services"),
     about: t("pageNames.about"),
   };
 
-  let title = "";
-  let breadcrumb = "";
-
-  if (path.includes("/card/")) {
-    title = t("cardTitle");
-    breadcrumb = t("breadcrumb.card");
-  }
-  else if (path.includes("/blog/")){
-    title = t("blogTitle");
-    breadcrumb = t("breadcrumb.blog");
-  } 
-  else {
-    const lastSegment = path.split("/").filter(Boolean).pop() || "home";
-    const formatted =
-      pageNames[lastSegment] ||
-      lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
-    title = formatted;
-    breadcrumb = formatted;
+  if (path === "/blog" || path.startsWith("/blog/")) {
+    const blogName = pageNames.blog || "Blog";
+    return {
+      title: blogName,
+      breadcrumb: blogName,
+    };
   }
 
-  return { title, breadcrumb };
+  if (path === "/news" || path.startsWith("/new/")) {
+    const newsName = pageNames.news || "News";
+    return {
+      title: newsName,
+      breadcrumb: newsName,
+    };
+  }
+
+  const lastSegment = path.split("/").filter(Boolean).pop() || "home";
+  const formatted =
+    pageNames[lastSegment] ||
+    lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+
+  return {
+    title: formatted,
+    breadcrumb: formatted,
+  };
 };

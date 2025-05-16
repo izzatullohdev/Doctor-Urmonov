@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   FaFacebookF,
   FaBars,
@@ -12,19 +12,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Translation from "../components/Translation";
 
+interface socialItem {
+  instagram: string;
+  telegram: string;
+  youtube: string;
+  whatsaap: string;
+  linkedin: string;
+  facebook: string;
+}
+
 const Navbar: FC = () => {
   const { t } = useTranslation();
   const _api = import.meta.env.VITE_API;
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [social, setSocial] = useState<socialItem | null>(null);
 
   const navLinks = [
     { path: "/", label: t("navbar.home") },
     { path: "/about", label: t("navbar.about") },
     { path: "/services", label: t("navbar.service") },
     { path: "/blog", label: t("navbar.blog") },
-    { path: "/news", label: t("navbar.news") },
-    { path: "/sampi", label: "SAMPI" }
+    { path: "/news", label: t("navbar.news") }
   ];
 
   const [notification, setNotification] = useState<null | { type: "success" | "error"; message: string }>(null)
@@ -78,6 +87,17 @@ const Navbar: FC = () => {
     setTimeout(() => setNotification(null), 3000)
   }
 
+  useEffect(() => {
+      fetch(`${_api}/socials/`)
+        .then(res => res.json())
+        .then(data => {
+          setSocial(data);
+        })
+        .catch(err => {
+          console.error("ma'lumotlarni olishda xatolik:", err);
+        });
+    }, []);
+
   return (
     <>
     <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
@@ -86,10 +106,18 @@ const Navbar: FC = () => {
           Doctor Urmonov
         </NavLink>
         <div className="max-lg:hidden flex items-center gap-6 text-gray-700 text-xl ml-10">
-          <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
-          <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
-          <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
-          <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+          <a href={social?.youtube} target="_blank">
+            <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
+          </a>
+          <a href={social?.instagram} target="_blank">
+            <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
+          </a>
+          <a href={social?.telegram} target="_blank">
+            <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
+          </a>
+          <a href={social?.facebook} target="_blank">
+            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+          </a>
         </div>
         <div className="hidden lg:flex items-center gap-8">
           <a href="tel:+998900302423" className="text-[#454745] font-montserrat text-[22px]">
@@ -213,10 +241,18 @@ const Navbar: FC = () => {
           className="flex items-center text-[#1F2A42] gap-4 py-4"
           variants={{ visible: {}, hidden: {} }}
         >
-          <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
-          <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
-          <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
-          <FaFacebookF className="hover:text-blue-600 cursor-pointer" size={18}/>
+          <a href={social?.youtube} target="_blank">
+            <AiOutlineYoutube className="hover:text-red-600 cursor-pointer" size={25}/>
+          </a>
+          <a href={social?.instagram} target="_blank">
+            <IoLogoInstagram className="hover:text-pink-500 cursor-pointer" size={23}/>
+          </a>
+          <a href={social?.telegram} target="_blank">
+            <PiTelegramLogo className="hover:text-sky-500 cursor-pointer" size={21}/>
+          </a>
+          <a href={social?.facebook} target="_blank">
+            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+          </a>
         </motion.div>
         <motion.div
           className="flex items-center gap-3"

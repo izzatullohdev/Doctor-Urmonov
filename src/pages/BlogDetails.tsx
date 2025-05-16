@@ -1,75 +1,91 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
+// import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Elementary from '../components/Elementary';
+import { useTranslation } from 'react-i18next';
+
+interface cardItem {
+  uuid: string;
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+  image: string;
+}
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const { BlogData } = useAppContext();
+  const { i18n } = useTranslation();
+  const _api = import.meta.env.VITE_API;
+  const [blog, setBlog] = useState<cardItem | null>(null);
 
   useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    fetch(`${_api}/blog/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setBlog(data);
+      })
+      .catch(err => {
+         console.error("ma'lumotlarni olishda xatolik:", err);
+      });
   }, []);
 
-  const blog = BlogData?.find(item => String(item.id) === id);
-
-  if (!blog) {
-    return <div className="text-center mt-10">Blog topilmadi 😕</div>;
-  }
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
 
   return (
     <>
       <Elementary />
       <div className='max-w-7xl mx-auto max-lg:px-4 bg-[#F5F8FF] rounded-[30px] text-[#0A0933] font-montserrat mb-24 px-8 py-6'>
-        <h1 title={blog.general_title} className='max-lg:w-[85%] text-start text-[32px] text-[#0A0933] font-semibold mb-4'>{blog.general_title}</h1>
+        <h1 
+          title={
+            i18n.language === "uz"
+            ? blog?.title_uz
+            : i18n.language === "ru"
+            ? blog?.title_ru
+            : blog?.title_en
+          }  
+          className='max-lg:w-[85%] text-start text-[32px] text-[#0A0933] font-semibold mb-7 my-4'
+        >
+          {
+            i18n.language === "uz"
+            ? blog?.title_uz
+            : i18n.language === "ru"
+            ? blog?.title_ru
+            : blog?.title_en
+          }
+        </h1>
         <img 
-          src={blog.general_image} 
-          alt={blog.general_title} 
+          src={`https://urmonov.novacode.uz/${blog?.image}`} 
+          alt={
+            i18n.language === "uz"
+            ? blog?.title_uz
+            : i18n.language === "ru"
+            ? blog?.title_ru
+            : blog?.title_en
+          } 
           className='w-full rounded-md mb-6' 
         />
-        <p className='text-[20px] leading-[140%]'>
-          {blog.description || "Hozircha bu blog haqida batafsil ma'lumot yo'q."}
-        </p>
-        <p className='text-[24px] font-medium leading-[140%] mt-6 mb-3'>{blog.sub_title}</p>
-        <div className="">
-            {
-                blog.sub_description?.map((item, index) => (
-                    <p key={index+1} className='text-[20px] leading-[140%]'>{item}</p>
-                ))
-            }
-        </div>
-        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-6 mt-6">
-            {
-                blog.helper_image?.map((item, index) =>(
-                    <img 
-                      key={index+1}
-                      src={item}
-                      loading='lazy' 
-                      alt={blog.sub_title}
-                    />
-                ))
-            }
-        </div>
-        <p className='text-[20px] leading-[140%] my-8'>{blog.helper_title}</p>
-        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-6 mt-6">
-            {
-                blog.helper_image_two?.map((item, index) =>(
-                    <img 
-                      key={index+1}
-                      src={item}
-                      loading='lazy' 
-                      alt={blog.sub_title}
-                    />
-                ))
-            }
-        </div>
+        <div
+          className="text-[20px] leading-[140%]"
+          dangerouslySetInnerHTML={{
+            __html:
+              i18n.language === "uz"
+                ? blog?.description_uz || ""
+                : i18n.language === "ru"
+                ? blog?.description_ru || ""
+                : blog?.description_en || ""
+          }}
+        ></div>
       </div>
-      <div className="max-w-7xl mx-auto max-lg:px-4 mb-24">
+      {/* <div className="max-w-7xl mx-auto max-lg:px-4 mb-24">
         <h1 title='Похожие блоги' className='text-[#000000] text-[32px] font-montserrat font-semibold leading-[140%] mb-6'>Похожие блоги</h1>
         <Swiper
           style={{ width: '100%' }}
@@ -120,7 +136,7 @@ const BlogDetails = () => {
                 ))
             }
         </Swiper>
-      </div>
+      </div> */}
     </>
   )
 }
