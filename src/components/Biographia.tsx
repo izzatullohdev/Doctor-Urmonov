@@ -12,6 +12,7 @@ interface bioTypes {
   title_uz: string;
   title_ru: string;
   title_en: string;
+  image: string;
   description_uz: string;
   description_ru: string;
   description_en: string;
@@ -42,6 +43,7 @@ const Biographia = () => {
         .then(res => res.json())
         .then(data => {
           setBio(data);
+          console.log(data);
         })
         .catch(err => {
            console.error("ma'lumotlarni olishda xatolik:", err);
@@ -50,13 +52,20 @@ const Biographia = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 flex max-lg:flex-col items-center justify-between gap-10 my-20">
+      {/* salom */}
       <div className="w-2xl max-sm:w-[360px] max-md:w-lg relative">
         <img 
-          src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227938/subtrack_ilj9yc.png'
-          alt="Биография" 
+          src={`https://urmonov.novacode.uz/${bio?.image}`}
+          alt={
+                i18n.language === "uz"
+                ? bio?.title_uz
+                : i18n.language === "ru"
+                ? bio?.title_ru
+                : bio?.title_en
+              } 
           className="object-contain rounded-xl"
         />
-        <div className="w-[46.5%] max-sm:w-[48%] max-md:w-[47.7%] max-lg:w-[45.5%] h-[22%] flex items-end justify-start absolute bottom-0 left-0 pt-2 pr-2">
+        <div className="bg-white w-[46.5%] max-sm:w-[48%] max-md:w-[47.7%] max-lg:w-[45.5%] h-[22%] flex items-end justify-start rounded-xl absolute bottom-0 left-0 pt-2 pr-2">
           <button className="w-full h-full bg-[#0A6CFB] rounded-[10px] text-white flex items-center gap-3 font-montserrat p-1">
             <h3 
               title={bio?.experience}
@@ -69,8 +78,11 @@ const Biographia = () => {
               <p className="text-[18px] max-sm:text-[12px] max-md:text-[14px] max-lg:text-[18px] font-montserrat">{t('bio.sub_desc')}</p>
             </span>
           </button>
+          <div className="bio-img-1 bg-transparent w-[35px] h-[30px] absolute top-[-30px] left-0"></div>
+          <div className="bio-img-2 bg-transparent w-[35px] h-[30px] absolute bottom-[0] right-[-35px]"></div>
         </div>
       </div>
+      {/* alik */}
       <div className="w-full lg:w-[45%] flex flex-col items-start gap-5">
         {isAboutPage ? (
           <>

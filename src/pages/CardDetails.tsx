@@ -108,7 +108,7 @@ const BlogCardDetails = () => {
               <p className='border-r-2 border-[#E1E1E1] max-md:border-none pr-4'>{card?.date}</p>
               <button className='text-[#0A6CFB] flex items-center gap-1'>
                 <span className='font-normal text-[18px]'>{t('global_title.share')}</span>
-                <TiArrowForwardOutline className='text-[19px] mb-[2px]' />
+                <TiArrowForwardOutline className='text-[19px] mb-[2px]'/>
               </button>
             </div>
           </div>
