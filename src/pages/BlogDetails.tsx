@@ -52,7 +52,7 @@ const BlogDetails = () => {
             ? blog?.title_ru
             : blog?.title_en
           }  
-          className='max-lg:w-[85%] text-start text-[32px] text-[#0A0933] font-semibold mb-7 my-4'
+          className='max-lg:w-[85%] text-start text-[32px] max-md:text-[21px] text-[#0A0933] font-semibold mb-7 my-4'
         >
           {
             i18n.language === "uz"
@@ -71,7 +71,7 @@ const BlogDetails = () => {
             ? blog?.title_ru
             : blog?.title_en
           } 
-          className='w-full rounded-md mb-6' 
+          className='w-full h-[500px] max-md:h-auto object-cover max-md:object-contain rounded-md mb-6' 
         />
         <div
           className="text-[20px] leading-[140%]"
@@ -85,58 +85,6 @@ const BlogDetails = () => {
           }}
         ></div>
       </div>
-      {/* <div className="max-w-7xl mx-auto max-lg:px-4 mb-24">
-        <h1 title='Похожие блоги' className='text-[#000000] text-[32px] font-montserrat font-semibold leading-[140%] mb-6'>Похожие блоги</h1>
-        <Swiper
-          style={{ width: '100%' }}
-          slidesPerView={4}
-          spaceBetween={20}
-          loop={false}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 15,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-        >
-            {
-                BlogData?.map((item) =>(
-                    <SwiperSlide key={item.id} className='rounded-[10px] overflow-hidden relative group shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer'>
-                        <img 
-                          src={item.image}
-                          alt={item.title} 
-                          className='w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out'
-                        />
-                        <div className="w-full absolute bottom-0 left-0 p-4">
-                          <h1 
-                            title={item.title} 
-                            className='text-start font-montserrat text-white text-[22px] md:text-[18px] lg:text-[20px] font-semibold leading-[125%]'
-                          >
-                            {item.title}
-                          </h1>
-                        </div>
-                    </SwiperSlide>
-                ))
-            }
-        </Swiper>
-      </div> */}
     </>
   )
 }

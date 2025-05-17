@@ -71,16 +71,16 @@ const Services = () => {
                 <img
                   src={`https://urmonov.novacode.uz/${item.image}`}
                   alt={getTitle(item)}
-                  className="w-full h-[450px] object-cover rounded-[10px]"
+                  className="w-full h-[450px] max-md:h-auto object-cover max-md:object-contain rounded-[10px]"
                 />
                 <h1
                   title={getTitle(item)}
-                  className='text-[32px] font-montserrat font-medium text-[#0A0933] leading-[140%] mt-7 my-3'
+                  className='text-[32px] max-md:text-[28px] font-montserrat font-medium text-[#0A0933] leading-[140%] mt-7 my-3'
                 >
                   {getTitle(item)}
                 </h1>
                 <div
-                  className="text-[#0A0933] text-[20px] leading-[140%] font-normal font-montserrat mb-5 mt-1"
+                  className="text-[#0A0933] text-[20px] max-md:text-[14px] leading-[140%] font-normal font-montserrat mb-5 mt-1"
                   dangerouslySetInnerHTML={{
                     __html: getDescription(item) || "",
                   }}

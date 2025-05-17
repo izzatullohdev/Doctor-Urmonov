@@ -47,7 +47,7 @@ const Years = () => {
               {isLeft && (
                 <div className="w-full md:w-5/10 flex justify-end md:pr-1 z-10">
                   <div className="rounded-lg w-full">
-                    <h2 className={`text-[#0A6CFB] font-semibold font-poppins text-end pr-5 ${yearFontSize}`}>
+                    <h2 className={`text-[#0A6CFB] font-semibold font-poppins text-end max-md:text-start pr-5 ${yearFontSize}`}>
                       {
                         i18n.language === "uz"
                         ? item.title_uz
@@ -57,7 +57,7 @@ const Years = () => {
                       }
                     </h2>
                     <div
-                      className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-end text-base whitespace-pre-line pl-16 px-5 py-2"
+                      className="bg-[#F5F8FF] font-montserrat text-[#000000] leading-[140%] font-medium text-[24px] text-end max-md:text-start text-base whitespace-pre-line pl-16 max-md:pl-5 px-5 py-2"
                       dangerouslySetInnerHTML={{
                         __html:
                           i18n.language === "uz"

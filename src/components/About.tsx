@@ -15,6 +15,7 @@ const About = () => {
   const _api = import.meta.env.VITE_API;
   const { t, i18n } = useTranslation();
   const [data, setData] = useState<dataTypes | null>(null);
+  // const [about, setAbout] = useState<dataTypes | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [notification, setNotification] = useState<null | { type: "success" | "error"; message: string }>(null)
 
@@ -73,6 +74,17 @@ const About = () => {
     });
   }, []);
 
+  // useEffect(() => {
+  //   fetch(`${_api}/about-us/`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setAbout(data);
+  //   })
+  //   .catch(err => {
+  //      console.error("ma'lumotlarni olishda xatolik:", err);
+  //   });
+  // }, []);
+
   const showNotification = (type: "success" | "error", message: string) => {
     setNotification({ type, message })
     setTimeout(() => setNotification(null), 3000)
@@ -80,7 +92,7 @@ const About = () => {
 
   return (
     <>
-      <div className="bg-[#F5F8FF] mt-[300px] my-20 max-xl:px-4 max-sm:px-0 max-md:hidden">
+      <div className="bg-[#F5F8FF] mt-36 my-20 max-xl:px-4 max-sm:px-0 max-md:hidden">
         <div className="max-w-7xl mx-auto max-md:px-4 max-sm:px-0 flex max-md:flex-col items-center justify-between relative pt-12 pb-18">
           <div className="w-[58%]">
             <h1
@@ -131,7 +143,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="md:hidden max-lg:mt-[200px] flex flex-col bg-[#F5F8FF] relative pt-8 px-4">
+      <div className="w-full md:hidden max-lg:mt-20 flex flex-col bg-[#F5F8FF] relative pt-8 px-4">
         <img
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747205024/Group_2_qx3zt1.png"
           alt={t("about.desc")}
@@ -139,27 +151,29 @@ const About = () => {
         />
         <h1
           title="Урмонов Умиджон Бутабекович"
-          className="relative font-bold text-[#0A0933] font-poppins text-[36px] leading-[140%]"
+          className="relative font-bold text-[#0A0933] font-poppins text-[38px] leading-[140%]"
         >
           {t("about.title")}
         </h1>
-        <p className="relative text-[#0A0933] text-[18px] font-montserrat font-medium my-4">{t("about.desc")}</p>
+        <p className="relative text-[#0A0933] text-[18px] font-montserrat my-4">{t("about.desc")}</p>
         <img
           src="https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747204776/IMG_0904_2_2_zx90fa.png"
           alt={t("about.desc")}
           className="relative mb-16"
         />
-        <button
-          className="w-[92%] flex items-center justify-center bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium absolute bottom-0 text-white py-5"
-          onClick={() => setIsModalOpen(true)}
-        >
-          {t("about.button")}
-        </button>
+        <div className="w-full absolute bottom-0 left-0 px-4">
+          <button
+            className="w-full flex items-center justify-center bg-[#0A6CFB] rounded-[5px] text-[20px] font-montserrat font-medium text-white py-5"
+            onClick={() => setIsModalOpen(true)}
+          >
+            {t("about.button")}
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            className="w-screen h-screen bg-[#0000004d] flex items-center justify-center fixed left-0 top-0 z-50"
+            className="w-screen h-screen bg-[#00000063] backdrop-blur flex items-center justify-center fixed left-0 top-0 z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

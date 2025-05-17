@@ -48,7 +48,7 @@ const Videos: React.FC = () => {
     <div className="max-w-7xl mx-auto my-20 px-4">
       <h1
         title={t("global_title.videos")}
-        className="text-[#0A0933] text-[36px] md:text-[48px] font-semibold text-center mb-10"
+        className="text-[#0A0933] text-[26px] md:text-[48px] font-semibold text-center mb-10"
       >
         {t("global_title.videos")}
       </h1>
@@ -104,7 +104,7 @@ const Videos: React.FC = () => {
                     }
                   ></iframe>
                 </div>
-                <h1 className="font-semibold mt-4 px-1 text-center text-white">
+                <h1 className="font-semibold text-xl max-md:text-md mt-4 px-1 text-start text-white">
                   {i18n.language === "uz"
                     ? item.title_uz
                     : i18n.language === "ru"

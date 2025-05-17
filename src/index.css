@@ -9,6 +9,10 @@ button {
   cursor: pointer !important;
 }
 
+.navbar::-webkit-scrollbar {
+  width: 0;
+}
+
 @font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");

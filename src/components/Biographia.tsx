@@ -50,7 +50,7 @@ const Biographia = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 flex max-lg:flex-col items-center justify-between gap-10 my-20">
-      <div className="w-2xl max-sm:w-md max-md:w-lg relative">
+      <div className="w-2xl max-sm:w-[360px] max-md:w-lg relative">
         <img 
           src='https://res.cloudinary.com/dmgcfv5f4/image/upload/v1747227938/subtrack_ilj9yc.png'
           alt="Биография" 

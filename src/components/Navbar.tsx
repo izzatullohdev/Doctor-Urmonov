@@ -12,6 +12,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Translation from "../components/Translation";
 
+interface navItem {
+  type: string;
+  title_uz: string;
+  title_ru: string;
+  title_en: string;
+}
+
 interface socialItem {
   instagram: string;
   telegram: string;
@@ -22,10 +29,11 @@ interface socialItem {
 }
 
 const Navbar: FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const _api = import.meta.env.VITE_API;
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nav, setNav] = useState<navItem[]>([]);
   const [social, setSocial] = useState<socialItem | null>(null);
 
   const navLinks = [
@@ -35,7 +43,7 @@ const Navbar: FC = () => {
     { path: "/blog", label: t("navbar.blog") },
     { path: "/news", label: t("navbar.news") }
   ];
-
+  
   const [notification, setNotification] = useState<null | { type: "success" | "error"; message: string }>(null)
 
   const [formData, setFormData] = useState({
@@ -96,11 +104,27 @@ const Navbar: FC = () => {
         .catch(err => {
           console.error("ma'lumotlarni olishda xatolik:", err);
         });
-    }, []);
+  }, []);
+
+  
+    useEffect(() => {
+    fetch(`${_api}/nav-title/`)
+      .then((res) => res.json())
+      .then((data) => {
+         if (Array.isArray(data)) {
+          setNav(data);
+        } else {
+           setNav([]);
+        }
+       })
+      .catch((err) => {
+        console.error("Ma'lumotlarni olishda xatolik:", err);
+       });
+  }, []);
 
   return (
     <>
-    <header className="w-full fixed top-0 left-0 z-50 bg-[#F8F9FF] border-b border-gray-200">
+    <header className="w-full bg-[#F8F9FF] border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-6 max-lg:py-4 px-4">
         <NavLink to={"/"} className="font-poppins font-extrabold text-[30px] sm:text-[36px] text-gray-900">
           Doctor Urmonov
@@ -158,21 +182,37 @@ const Navbar: FC = () => {
           </motion.button>
         </div>
       </div>
-      <nav className="bg-[#F8F9FF]">
-        <ul className="max-w-7xl mx-auto px-4 gap-10 py-[0px] text-[18px] font-medium text-[#454745] hidden lg:flex">
+      <nav className="bg-[#F8F9FF] overflow-x-auto">
+        <ul className="max-w-7xl navbar mx-auto hidden lg:flex items-start px-4 gap-10 text-[18px] text-[#454745] font-poppins font-medium">
           {navLinks.map(({ path, label }) => (
             <li key={path} className="py-5">
               <NavLink
                 to={path}
                 className={({ isActive }) =>
                   isActive
-                    ? "font-bold border-b-2 border-[#454745] text-[#454745] pb-5.5"
+                    ? "font-bold border-b-2 border-[#454745] text-[#454745] pb-5"
                     : "hover:text-gray-900"
                 }
               >
                 {label}
               </NavLink>
             </li>
+          ))}
+          {nav?.map((item, index) => (
+            <li key={`nav-${index}`} className="py-5">
+              <NavLink
+                to={item?.type}
+                className="hover:text-gray-900 text-[#454745] pb-5.5"
+              >
+                {
+                  i18n.language === "uz"
+                    ? item.title_uz.slice(0, 12)
+                    : i18n.language === "ru"
+                    ? item.title_ru.slice(0, 12)
+                    : item.title_en.slice(0, 12)
+                }
+              </NavLink>
+           </li>
           ))}
         </ul>
         <AnimatePresence>
@@ -213,6 +253,19 @@ const Navbar: FC = () => {
                       {label}
                     </NavLink>
                   </motion.li>
+                ))}
+                {nav?.map((item, index)=>(
+                  <li key={index+1} className="py-">
+                    <NavLink to={item?.type} className='hover:text-gray-900 text-[#454745] pb-5.5'>
+                      {
+                        i18n.language === "uz"
+                        ? item.title_uz.slice(0, 12)
+                        : i18n.language === "ru"
+                        ? item.title_ru.slice(0, 12)
+                        : item.title_en.slice(0, 12)
+                      }
+                    </NavLink>
+                  </li>
                 ))}
                 <motion.button
                 onClick={() => setIsModalOpen(true)}
@@ -266,7 +319,7 @@ const Navbar: FC = () => {
     <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            className="w-screen h-screen bg-[#0000004d] flex items-center justify-center fixed left-0 top-0 z-50"
+            className="w-screen h-screen bg-[#00000063] backdrop-blur flex items-center justify-center fixed left-0 top-0 z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

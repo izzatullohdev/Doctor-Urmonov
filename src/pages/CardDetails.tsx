@@ -91,7 +91,7 @@ const BlogCardDetails = () => {
             }}
           ></div>
           <div className="flex justify-between items-end max-md:flex-col max-md:items-start max-md:gap-2">
-            <div className="w-[50%] flex items-center gap-3 flex-wrap">
+            <div className="w-[50%] flex items-center gap-3 flex-wrap max-md:mt-8">
               {card?.hashtags.map((item, index) => (
                 <p key={index} className='text-[#0A6CFB] text-[14px]'>
                   {
@@ -104,8 +104,8 @@ const BlogCardDetails = () => {
                 </p>
               ))}
             </div>
-            <div className="flex items-center gap-2 text-[18px] font-montserrat font-normal text-[#454745] mt-10">
-              <p className='border-r-2 border-[#E1E1E1] pr-4'>{card?.date}</p>
+            <div className="flex items-center max-md:w-full max-md:justify-between gap-2 text-[18px] font-montserrat font-normal text-[#454745] mt-10 max-md:mt-5">
+              <p className='border-r-2 border-[#E1E1E1] max-md:border-none pr-4'>{card?.date}</p>
               <button className='text-[#0A6CFB] flex items-center gap-1'>
                 <span className='font-normal text-[18px]'>{t('global_title.share')}</span>
                 <TiArrowForwardOutline className='text-[19px] mb-[2px]' />

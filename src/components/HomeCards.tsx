@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface cardItem {
   uuid: string;
@@ -37,7 +38,7 @@ const HomeCards = () => {
 
   return (
     <div className='max-w-7xl mx-auto max-md:px-4 my-20'>
-      <h1 title='Перечень услуг' className='text-[#1F2A42] text-[48px] font-poppins font-bold leading-[140%] text-center'>
+      <h1 title='Перечень услуг' className='text-[#1F2A42] max-md:text-[28px] text-[48px] font-poppins font-bold leading-[140%] text-center'>
         {t('global_title.cards')}
       </h1>
       <div className="max-w-7xl mx-auto grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-xl:grid-cols-2 mt-16 gap-4">
@@ -63,19 +64,19 @@ const HomeCards = () => {
                 dangerouslySetInnerHTML={{
                   __html:
                     i18n.language === "uz"
-                      ? item.description_uz
+                      ? item.description_uz.slice(0, 500)
                       : i18n.language === "ru"
-                      ? item.description_ru
-                      : item.description_en,
+                      ? item.description_ru.slice(0, 500)
+                      : item.description_en.slice(0, 500),
                 }}
               />
             </div>
             <div className="w-[165px] h-[95px] bg-white rounded-[21px] absolute bottom-[-25px] right-[-25px] transition-all duration-300">
               <div className="w-[35px] h-[35px] absolute bottom-[25px] right-[165px] bg-[#F5F8FF] border border-[#F5F8FF] card-shadow transition-all duration-300 group-hover:bg-[#0A0933] group-hover:border-[#0A0933]"></div>
               <div className="w-[35px] h-[35px] absolute bottom-[95px] right-[25px] bg-[#F5F8FF] border border-[#F5F8FF] card-shadow transition-all duration-300 group-hover:bg-[#0A0933] group-hover:border-[#0A0933]"></div>
-              <button className='w-[125px] h-[55px] ml-3 mt-3 rounded-[10px] text-[20px] font-normal transition-all duration-300 bg-[#0A6CFB] text-white'>
+              <NavLink to={"/services"} className='flex items-center justify-center w-[125px] h-[55px] ml-3 mt-3 rounded-[10px] text-[20px] font-normal transition-all duration-300 bg-[#0A6CFB] text-white'>
                 {t('global_title.button')}
-              </button>
+              </NavLink>
             </div>
           </div>
         ))}

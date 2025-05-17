@@ -8,7 +8,7 @@ const Elementary = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="max-w-7xl mx-auto mt-[250px] max-lg:mt-[250px] bg-[#F5F8FF] flex items-center justify-center rounded-[20px] py-6 my-20">
+    <div className="max-w-7xl mx-auto bg-[#F5F8FF] flex items-center justify-center rounded-[20px] py-6 my-20">
       <span className="flex flex-col items-center gap-3">
         <h1 title="blog title" className="text-6xl font-montserrat font-semibold">
           {title}

@@ -65,7 +65,7 @@ const ContactSection: FC = () => {
   return (
     <>
       <section className="bg-[#F8F9FF] text-gray-900 px-4 md:px-10 py-10">
-        <h2 title={t('global_title.contact')} className="text-center text-[#0A0933] text-[56px] font-extrabold mb-10">
+        <h2 title={t('global_title.contact')} className="text-center text-[#0A0933] max-md:text-[28px] text-[48px] font-bold mb-10">
           {t('global_title.contact')}
         </h2>
         <div className="max-w-7xl mx-auto flex max-md:flex-col max-md:gap-12 items-center justify-between">

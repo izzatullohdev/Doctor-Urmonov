@@ -1,22 +1,10 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { 
-  PatientTypes, 
-  InfoTypes, 
-} from "../types";
-
-import { 
-  PatientData, 
-  InfoData, 
-} from "../../data";
-
 const urlBase = "https://bestcare.novacode.uz/api/";
 
 type AppContextType = {
   user: string | null;
   setUser: (user: string | null) => void;
   urlBase: string;
-  PatientData: PatientTypes[];
-  InfoData: InfoTypes[];
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -33,8 +21,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       value={{ 
         user, setUser, 
         urlBase, 
-        PatientData: PatientData, 
-        InfoData: InfoData, 
       }}>
       {children}
     </AppContext.Provider>

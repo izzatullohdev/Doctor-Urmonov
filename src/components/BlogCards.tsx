@@ -50,6 +50,26 @@ const BlogCards = () => {
                   }  
                   className='w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out'
                 />
+                <div className="w-full absolute bottom-0 left-0 px-4 py-2">
+                  <h1 
+                    title={
+                      i18n.language === "uz"
+                      ? item.title_uz
+                      : i18n.language === "ru"
+                      ? item.title_ru
+                      : item.title_en
+                    }  
+                    className='text-white text-[20px] font-semibold text-start'
+                  >
+                    {
+                      i18n.language === "uz"
+                      ? item.title_uz
+                      : i18n.language === "ru"
+                      ? item.title_ru
+                      : item.title_en
+                    }
+                  </h1>
+                </div>
               </div>
             </NavLink>
           ))
